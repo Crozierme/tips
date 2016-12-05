@@ -9,6 +9,40 @@
 </CENTER>
 
 <P>
+stata 常用的繪圖指令有 <CODE>histogram</CODE> 與 <CODE>graph bar</CODE> 兩種，
+兩者的差別在於 <CODE>histogram</CODE> 的橫軸為數值， <CODE>graph bar</CODE> 的橫軸為類別。
+</P>
+<P>
+<CODE>hist</CODE> 的使用比較單純，它畫的是某一個變數的值的分佈情況。
+譬如 <CODE>hist var1</CODE> 會畫出 var1 的分佈情況。
+若加上 <CODE>by(group)</CODE>，則會將資料依照 group 的值分群，再畫出每一群裡變數的分布情況。
+完整的指令為 <CODE>hist var1, by(group)</CODE>。
+</P>
+<P>
+<CODE>graph bar</CODE> 的用法有兩種，
+第一種是畫出某個變數的統計量。
+譬如 <CODE>graph bar var1</CODE> 會畫出 var1 的平均值。
+<CODE>graph bar var1 var2</CODE> 會畫出 var1 var2 兩個變數的平均值。
+要注意的是， <CODE>hist var1 var2</CODE> 是不合法的指令。因為我們無法畫出兩個變數的分布情況。
+</P>
+<P>
+<CODE>graph bar</CODE> 如果加上 <CODE>over(category)</CODE>，則會將資料依照 category 的值分群，
+再畫出每一群裡 var1 的平均值。
+完整的指令為 <CODE>graph bar var1, over(category)</CODE>。
+</P>
+<P>
+<CODE>graph bar</CODE> 的第二種用法是統計某一個變數的每一個值各出現過幾次。
+譬如 <CODE>category</CODE> 的值為 0, 1, 2，
+則 <CODE>graph bar, over(category)</CODE> 畫的是 category 等於 0, 1, 2 的次數各是多少。
+要注意的是，如果 category 的值為數值，則 <CODE>graph bar, over(category)</CODE> 跟 <CODE>hist category</CODE> 是一樣的意思。
+但如果 category 的值為字串，譬如其值為東西南北，
+則 <CODE>graph bar, over(category)</CODE> 會畫出東西南北各出現幾次，
+<CODE>hist category</CODE> 則無法作圖。
+</P>
+
+<HR NOSHADE SIZE=1>
+
+<P>
 <CODE>. sysuse sp500, clear</CODE>
 </P>
 <P>
