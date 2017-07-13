@@ -11874,7 +11874,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element dl at 0x104968488&gt;]</pre>
+<pre>[&lt;Element dl at 0x10b6c4848&gt;]</pre>
 </div>
 
 </div>
@@ -11905,7 +11905,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element div at 0x1049680c8&gt;, &lt;Element div at 0x104968088&gt;]</pre>
+<pre>[&lt;Element div at 0x10b6c41c8&gt;, &lt;Element div at 0x10b6d4208&gt;]</pre>
 </div>
 
 </div>
@@ -11967,7 +11967,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element div at 0x1049680c8&gt;]</pre>
+<pre>[&lt;Element div at 0x10b6c41c8&gt;]</pre>
 </div>
 
 </div>
@@ -12029,7 +12029,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element a at 0x104968108&gt;, &lt;Element a at 0x104979188&gt;]</pre>
+<pre>[&lt;Element a at 0x10b6d4288&gt;, &lt;Element a at 0x10b6d4388&gt;]</pre>
 </div>
 
 </div>
@@ -12060,7 +12060,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element a at 0x104979188&gt;]</pre>
+<pre>[&lt;Element a at 0x10b6d4388&gt;]</pre>
 </div>
 
 </div>
@@ -12127,6 +12127,53 @@ dl -- dt -- a
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">subh</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd&#39;</span><span class="p">)</span>   <span class="c1"># 令 subh 為 &lt;dd&gt; 標籤底下的所有東西</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">))</span>  <span class="c1"># 若下令 &#39;//a&#39;, 則會找出所有標籤為 &lt;a&gt; 的元素，</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/a&#39;</span><span class="p">))</span>   <span class="c1"># 錯誤指令</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./a&#39;</span><span class="p">))</span>  <span class="c1"># 若只想找 &lt;dd&gt; 標籤底下的 &lt;a&gt;, 要下令 &#39;./a&#39;, . 表示現在的節點位置</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&lt;Element a at 0x10b6d4288&gt;, &lt;Element a at 0x10b6d4388&gt;]
+[]
+[&lt;Element a at 0x10b6d4388&gt;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 
