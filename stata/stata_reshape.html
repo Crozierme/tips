@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>stata_reshape</title>
 
 
 <style type="text/css">
@@ -328,78 +328,30 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">Tips</h1>
+<h1 id="toc_0">Reshape</h1>
 
-<ul>
-<li><a href="#txt2tags">txt2tags</a></li>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">stata</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
-</ul>
+<p>stata 內建的 <code>reshape</code> 指令非常耗時，以下提供 <code>reshape long</code> 的替代方案。</p>
 
-<hr>
+<p>假設原先有 99999 個觀察值，要對 var1 - var500 進行  <code>reshape long</code>，使用內建的指令為：</p>
 
-<p><a name="txt2tags"></a> </p>
+<div><pre><code class="language-none">. reshape long var, i(id) j(j)</code></pre></div>
 
-<h2 id="toc_1">txt2tags</h2>
+<p>可以改寫為：</p>
 
-<ul>
-<li><a href="txt2tags_basics.html">t2t 基礎說明</a></li>
-<li><a href="http://txt2tags.org/markup.html">官方 markup 範例</a></li>
-<li><a href="http://txt2tags.org/txt2tags-quickref.pdf">指令速查表</a></li>
-<li><a href="https://mostlylinux.wordpress.com/textanddocument/txt2tagscheatsheet/">各種範例詳解</a></li>
-<li><a href="http://txt2tags.org/tips.html">官方小秘技</a></li>
-<li><a href="http://txt2tags.org/zh/userguide-zh.pdf">簡中版手冊</a></li>
-</ul>
-
-<p><a name="Python"></a> </p>
-
-<h2 id="toc_2">Python</h2>
-
-<ul>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_select_in_pd.html">select data in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/how_class_works.html">how class works</a></li>
-<li><a href="http://statsmodels.sourceforge.net/devel/examples/index.html">statsmodels</a></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-</ul>
-
-<p><a name = "stata"></a></p>
-
-<h2 id="toc_3">stata</h2>
-
-<ul>
-<li><a href="stata/gen_egen.html">gen vs egen</a></li>
-<li><a href="stata/stata_reshape.html">reshpae</a></li>
-<li><a href="stata/stata_string.html">string functions</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
-
-<ul>
-<li><a href="otree.html">基本操作</a></li>
-<li><a href="otree/myapp_models.html">myapp models</a></li>
-<li><a href="otree/myapp_views.html">myapp views</a></li>
-<li><a href="otree/otree_models.html">detail of models.py</a></li>
-<li><a href="otree/otree_view.html">detail of view.py</a></li>
-<li><a href="otree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_5">MySQL on Mac</h2>
-
-<ul>
-<li><a href="mysql.html">基本操作</a></li>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
-</ul>
+<div><pre><code class="language-none">. sort id
+. gen temp_id = _n
+. gen var = .
+. gen j = .
+. expand 500
+. sort temp_id
+. forvalues num = 1/99999 { 
+      local k = 500 * (`num&#39; - 1)
+      forvalues i = 1/500 {
+          local new_index = `k&#39; + `i&#39;
+          replace var = var`i&#39; in `new_index&#39;
+          replace j = `i&#39; in `new_index&#39;
+          }
+      }</code></pre></div>
 
 
 
