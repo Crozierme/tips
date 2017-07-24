@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>stata_reshape</title>
+<title>stata_commands</title>
 
 
 <style type="text/css">
@@ -328,7 +328,50 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">Reshape</h1>
+<h1 id="toc_0">stata 指令集</h1>
+
+<ul>
+<li><a href="#reshape">reshape</a></li>
+<li><a href="#merge">merge</a></li>
+<li><a href="#allmissing">找出 all missing 的變數</a> </li>
+</ul>
+
+<h2 id="toc_1">gen vs egen</h2>
+
+<div><pre><code class="language-none">. gen p = _n
+. gen sum_1 = sum(p)
+. egen sum_2 = sum(p)
+. list
+  
+       +-------------------+
+       | p   sum_1   sum_2 |
+       |-------------------|
+    1. | 1       1      15 |
+    2. | 2       3      15 |
+    3. | 3       6      15 |
+    4. | 4      10      15 |
+    5. | 5      15      15 |
+       +-------------------+</code></pre></div>
+
+<h2 id="toc_2">計算每個 row 有幾個 nonmissing var</h2>
+
+<div><pre><code class="language-none">egen var = rownonmiss(varlist), strok</code></pre></div>
+
+<p>It gives the number of nonmissing values in varlist for each observation (row). </p>
+
+<h2 id="toc_3">若某一變數值為 string, numeric 混合形式，如何區分兩者？</h2>
+
+<div><pre><code class="language-none">list var if missing(real(var)) &amp; var != &quot;&quot; </code></pre></div>
+
+<p><a name = "allmissing"></a></p>
+
+<h2 id="toc_4">找出 all missing 的變數</h2>
+
+<div><pre><code class="language-none">findname, all(missing(@)) a </code></pre></div>
+
+<p><a name="reshape"></a> </p>
+
+<h2 id="toc_5">reshape</h2>
 
 <p>stata 內建的 <code>reshape</code> 指令非常耗時，以下提供 <code>reshape long</code> 的替代方案。</p>
 
@@ -352,6 +395,182 @@ kbd {
           replace j = `i&#39; in `new_index&#39;
           }
       }</code></pre></div>
+
+<p><a name="merge"></a> </p>
+
+<h2 id="toc_6">merge</h2>
+
+<ul>
+<li>master_data</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>var1</th>
+<th>var2</th>
+<th>var3</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>B</td>
+<td>3</td>
+<td>.</td>
+</tr>
+<tr>
+<td>C</td>
+<td>.</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>using_data</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>var1</th>
+<th>var2</th>
+<th>var3</th>
+<th>var4</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>merge, without update</li>
+</ul>
+
+<div><pre><code class="language-none">. clear
+. use master_data
+. merge 1:1 var1 using using_data
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+    matched                                 3  (_merge==3)
+    -----------------------------------------</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>var1</th>
+<th>var2</th>
+<th>var3</th>
+<th>var4</th>
+<th>_merge</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>matched (3)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>3</td>
+<td>.</td>
+<td>4</td>
+<td>matched (3)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>.</td>
+<td>.</td>
+<td>4</td>
+<td>matched (3)</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>merge, with update</li>
+</ul>
+
+<div><pre><code class="language-none">. clear
+. use master_data
+. merge 1:1 var1 using using_data, update
+
+    Result                           # of obs.
+    -----------------------------------------
+    not matched                             0
+
+    matched                                 3
+        not updated                         0  (_merge==3)
+        missing updated                     1  (_merge==4)
+        nonmissing conflict                 2  (_merge==5)
+    -----------------------------------------</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>var1</th>
+<th>var2</th>
+<th>var3</th>
+<th>var4</th>
+<th>_merge</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>A</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>nonmissing conflict (5)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+<td>nonmissing conflict (5)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>missing updated (5)</td>
+</tr>
+</tbody>
+</table>
 
 
 
