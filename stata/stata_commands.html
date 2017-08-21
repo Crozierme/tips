@@ -331,12 +331,16 @@ kbd {
 <h1 id="toc_0">stata 指令集</h1>
 
 <ul>
-<li><a href="#reshape">reshape</a></li>
+<li><a href="#gensumvsegensum"><code>gen sum</code> vs <code>egen sum</code></a></li>
+<li><a href="#nonmissinginrow">計算每個 row 有幾個 nonmissing var</a></li>
+<li><a href="#allmissing">找出 all missing 的變數並 drop 該變數</a> </li>
+<li><a href="#reshape">reshape long 替代演算法</a></li>
 <li><a href="#merge">merge</a></li>
-<li><a href="#allmissing">找出 all missing 的變數</a> </li>
 </ul>
 
-<h2 id="toc_1">gen vs egen</h2>
+<p><a name = "gensumvsegensum"></a></p>
+
+<h2 id="toc_1"><code>gen sum</code> vs <code>egen sum</code></h2>
 
 <div><pre><code class="language-none">. gen p = _n
 . gen sum_1 = sum(p)
@@ -353,25 +357,26 @@ kbd {
     5. | 5      15      15 |
        +-------------------+</code></pre></div>
 
+<p><a name = "nonmissinginrow"></a></p>
+
 <h2 id="toc_2">計算每個 row 有幾個 nonmissing var</h2>
 
 <div><pre><code class="language-none">egen var = rownonmiss(varlist), strok</code></pre></div>
 
 <p>It gives the number of nonmissing values in varlist for each observation (row). </p>
 
-<h2 id="toc_3">若某一變數值為 string, numeric 混合形式，如何區分兩者？</h2>
-
-<div><pre><code class="language-none">list var if missing(real(var)) &amp; var != &quot;&quot; </code></pre></div>
-
 <p><a name = "allmissing"></a></p>
 
-<h2 id="toc_4">找出 all missing 的變數</h2>
+<h2 id="toc_3">找出 all missing 的變數並 drop 該變數</h2>
 
-<div><pre><code class="language-none">findname, all(missing(@)) a </code></pre></div>
+<div><pre><code class="language-none">. findname, all(missing(@)) a 
+. foreach i in `r(varlist)&#39; {
+     drop `i&#39;
+     }</code></pre></div>
 
 <p><a name="reshape"></a> </p>
 
-<h2 id="toc_5">reshape</h2>
+<h2 id="toc_4">reshape long 替代演算法</h2>
 
 <p>stata 內建的 <code>reshape</code> 指令非常耗時，以下提供 <code>reshape long</code> 的替代方案。</p>
 
@@ -398,7 +403,7 @@ kbd {
 
 <p><a name="merge"></a> </p>
 
-<h2 id="toc_6">merge</h2>
+<h2 id="toc_5">merge</h2>
 
 <ul>
 <li>master_data</li>

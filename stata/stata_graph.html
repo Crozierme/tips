@@ -354,7 +354,14 @@ kbd {
 則 <code>graph bar, over(category)</code> 會畫出東西南北各出現幾次，
 <code>hist category</code> 則無法作圖。</p>
 
+<p>請仔細比較 example 3, 4, 5 的差異。</p>
+
 <h2 id="toc_1">example 1</h2>
+
+<ul>
+<li>將資料按照 <code>trend</code> 分群，並畫出每一群 <code>volume</code> 的分佈情況。</li>
+<li>將畫好的圖存成 png 格式，並指定圖檔的長寬。</li>
+</ul>
 
 <div><pre><code class="language-none">. sysuse sp500, clear
 . gen trend = &quot;UP&quot; if change &gt; 0 &amp; change != .
@@ -368,32 +375,53 @@ kbd {
 
 <h2 id="toc_2">example 2</h2>
 
-<div><pre><code class="language-.">. graph export vol_by_trend2.png, replace width(600) height(450)</code></pre></div>
+<ul>
+<li>畫出直方圖，並設定 X 軸、Y 軸標題，設定 X 軸、Y 軸的極大極小值與級距，設定 X 軸、Y 軸上的數字轉向 45 度，增加圖片說明，將背景改為白色，直方圖顏色加深。</li>
+</ul>
+
+<div><pre><code class="language-none">. hist volume, percent by(trend, note(&quot;Note&quot;) graphregion(color(white))) color(*1.3) xtitle(&quot;xTitle&quot;) xlabel(5000(10000)25000, angle(45)) ytitle(&quot;yTitle&quot;, height(6)) ylabel(0(5)30, angle(45))
+. graph export vol_by_trend2.png, replace width(600) height(450)</code></pre></div>
 
 <p><img src="figs/stata_vol_by_trend2.png" alt=""></p>
 
 <h2 id="toc_3">example 3</h2>
 
-<div><pre><code class="language-none">. graph bar month
-. graph export month1.png, replace width(600) height(450)</code></pre></div>
-
-<p><img src="figs/stata_month1.png" alt=""></p>
+<ul>
+<li>畫出 <code>month</code> 的平均值。
+<code>
+. graph bar month
+. graph export month1.png, replace width(600) height(450)
+</code>
+<img src="figs/stata_month1.png" alt=""></li>
+</ul>
 
 <h2 id="toc_4">example 4</h2>
 
-<div><pre><code class="language-none">. graph bar, over(month)
-. graph export month2.png, replace width(600) height(450)</code></pre></div>
-
-<p><img src="figs/stata_month2.png" alt=""></p>
+<ul>
+<li>將資料以 <code>month</code> 分群，畫出每一群的占比。
+<code>
+. graph bar, over(month)
+. graph export month2.png, replace width(600) height(450)
+</code>
+<img src="figs/stata_month2.png" alt=""></li>
+</ul>
 
 <h2 id="toc_5">example 5</h2>
 
-<div><pre><code class="language-none">. graph bar high,  over(month)
+<ul>
+<li>將資料以 <code>month</code> 分群，畫出每一群 <code>high</code> 的平均值。</li>
+</ul>
+
+<div><pre><code class="language-none">. graph bar high, over(month)
 . graph export high.png, replace width(600) height(450)</code></pre></div>
 
 <p><img src="figs/stata_high.png" alt=""></p>
 
 <h2 id="toc_6">example 6</h2>
+
+<ul>
+<li>將資料以 <code>month</code> 分群，畫出每一群 <code>high</code>、<code>low</code> 的平均值。</li>
+</ul>
 
 <div><pre><code class="language-none">. graph bar high low,  over(month)
 . graph export high_low.png, replace width(600) height(450)</code></pre></div>
@@ -402,17 +430,15 @@ kbd {
 
 <h2 id="toc_7">example 7</h2>
 
+<ul>
+<li>畫出長條圖，將橫軸數字轉向 45 度，將背景改為白色，設定橫軸標題，設定 Y 軸標題並調整標題與軸線的距離，改變圖例。</li>
+<li>註：長條圖的橫軸不稱為 X 軸，要調整橫軸標題時，要使用 <code>b1title(&quot;NewTitle&quot;)</code> 指令，而不是 <code>xtitle(&quot;NewTitle&quot;)</code>。</li>
+</ul>
+
 <div><pre><code class="language-none">. graph bar high low,  over(month, label(angle(45))) graphregion(color(white))) b1title(&quot;barTitle&quot;) ytitle(&quot;yTitle&quot;, height(6)) legend(lab(1 &quot;High&quot;) lab(2 &quot;Low&quot;))
 . graph export high_low2.png, replace width(600) height(450)</code></pre></div>
 
 <p><img src="figs/stata_high_low2.png" alt=""></p>
-
-<h2 id="toc_8">example 8</h2>
-
-<div><pre><code class="language-none">. graph bar high, over(evenmonth)
-. graph export evenhigh.png, replace width(600) height(450)</code></pre></div>
-
-<p><img src="figs/stata_evenhigh.png" alt=""></p>
 
 
 
