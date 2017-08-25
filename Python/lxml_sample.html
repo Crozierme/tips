@@ -11829,12 +11829,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>上面這段 HTML 的結構如下：
+
+<pre><code>上面這段 HTML 的結構如下：
 dl -- dt -- a
    -- dd -- a
          -- div, class = "desc"
          -- div, class = "rating" -- span, class = "allstar50"
-                                  -- span, class = "rating_nums"</p>
+                                  -- span, class = "rating_nums"</code></pre>
 
 </div>
 </div>
@@ -11874,7 +11875,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element dl at 0x10b6c4848&gt;]</pre>
+<pre>[&lt;Element dl at 0x1083c2bc8&gt;]</pre>
 </div>
 
 </div>
@@ -11905,7 +11906,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element div at 0x10b6c41c8&gt;, &lt;Element div at 0x10b6d4208&gt;]</pre>
+<pre>[&lt;Element div at 0x108a425c8&gt;, &lt;Element div at 0x108a42748&gt;]</pre>
 </div>
 
 </div>
@@ -11967,7 +11968,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element div at 0x10b6c41c8&gt;]</pre>
+<pre>[&lt;Element div at 0x108a425c8&gt;]</pre>
 </div>
 
 </div>
@@ -12029,7 +12030,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element a at 0x10b6d4288&gt;, &lt;Element a at 0x10b6d4388&gt;]</pre>
+<pre>[&lt;Element a at 0x1083d7408&gt;, &lt;Element a at 0x108a595c8&gt;]</pre>
 </div>
 
 </div>
@@ -12060,7 +12061,7 @@ dl -- dt -- a
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element a at 0x10b6d4388&gt;]</pre>
+<pre>[&lt;Element a at 0x108a595c8&gt;]</pre>
 </div>
 
 </div>
@@ -12133,7 +12134,7 @@ dl -- dt -- a
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">subh</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd&#39;</span><span class="p">)</span>   <span class="c1"># 令 subh 為 &lt;dd&gt; 標籤底下的所有東西</span>
@@ -12154,9 +12155,109 @@ dl -- dt -- a
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&lt;Element a at 0x10b6d4288&gt;, &lt;Element a at 0x10b6d4388&gt;]
+<pre>[&lt;Element a at 0x1083d7408&gt;, &lt;Element a at 0x108a595c8&gt;]
 []
-[&lt;Element a at 0x10b6d4388&gt;]
+[&lt;Element a at 0x108a595c8&gt;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">iter</span><span class="p">():</span>  <span class="c1"># 列出所有標籤跟標籤內的文字</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>html - None
+body - None
+dl - 
+    
+dt - 
+      
+a - 
+        
+img - None
+dd - 
+      
+a - 霸王别姬
+div - 
+        中国大陆 / 剧情 / 爱情 / 同性 / 1993 / 陈凯歌 / 张国荣 / 张丰毅 / 巩俐
+      
+div - 
+          
+span - None
+span - 9.5
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 列印網頁原始碼</span>
+<span class="c1">### 注意 encoding 與 decode 的處理, 否則無法正確顯示文字</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;html&gt;&lt;body&gt;&lt;dl&gt;
+    &lt;dt&gt;
+      &lt;a href=&#34;https://movie.douban.com/subject/1291546/?from=tag_all&#34; target=&#34;_blank&#34;&gt;
+        &lt;img src=&#34;https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1910813120.jpg&#34;/&gt;
+      &lt;/a&gt;
+    &lt;/dt&gt;
+    
+    &lt;dd&gt;
+      &lt;a href=&#34;https://movie.douban.com/subject/1291546/?from=tag_all&#34; class=&#34;title&#34; target=&#34;_blank&#34;&gt;霸王别姬&lt;/a&gt;
+        
+      
+      &lt;div class=&#34;desc&#34;&gt;
+        中国大陆 / 剧情 / 爱情 / 同性 / 1993 / 陈凯歌 / 张国荣 / 张丰毅 / 巩俐
+      &lt;/div&gt;
+    
+        &lt;div class=&#34;rating&#34;&gt;
+          &lt;span class=&#34;allstar50&#34;/&gt;
+          &lt;span class=&#34;rating_nums&#34;&gt;9.5&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/body&gt;&lt;/html&gt;
 </pre>
 </div>
 </div>

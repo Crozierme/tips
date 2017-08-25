@@ -330,29 +330,81 @@ kbd {
 
 <h1 id="toc_0">Python crawler</h1>
 
-<h2 id="toc_1">概念</h2>
-
 <ul>
-<li>網路爬蟲分成兩個部分，擷取網頁內容，分析網頁內容。</li>
+<li><a href="#getwebpage">抓取網頁</a></li>
+<li><a href="#getimage">抓取圖片</a></li>
 </ul>
 
-<h2 id="toc_2">擷取靜態網頁</h2>
+<p><a name = 'getwebpage'></a></p>
+
+<h2 id="toc_1">抓取網頁</h2>
+
+<h3 id="toc_2">概念</h3>
 
 <ul>
-<li>可使用 <a href="http://docs.python-requests.org/zh_CN/latest/index.html">requests 套件</a></li>
+<li>網路爬蟲分成兩個部分: 擷取網頁內容，分析網頁內容。</li>
+<li>網頁又可以分為靜態網頁與動態網頁。靜態網頁指純文字與圖片的網頁，沒有任何程式功能，不會讀取資料庫的資料。動態網頁是會與使用者互動的網頁，使用者與網頁互動後，網頁會透過程式與資料庫結合，決定所要呈現的內容。</li>
+<li>簡單來說，靜態網頁的內容是固定的，不同使用者在相同的網址看到的內容都一樣。但是動態網頁的內容是動態的，相同的網址呈現的內容不一定相同。</li>
 </ul>
 
-<h2 id="toc_3">擷取動態網頁</h2>
+<h3 id="toc_3">擷取靜態網頁</h3>
 
 <ul>
-<li>可使用 <a href="http://ithelp.ithome.com.tw/articles/10185964">selenium </a></li>
+<li>使用 <a href="http://docs.python-requests.org/zh_CN/latest/index.html">requests</a> 取得網頁原始碼</li>
+<li>基本流程：</li>
 </ul>
 
-<h2 id="toc_4">分析網頁 (parsing)</h2>
+<div><pre><code class="language-none">import requests
+
+url = &#39;https://www.ptt.cc/bbs/movie/index.html&#39;
+response = requests.get(url) 
+source_text = response.text # 取得網頁原始碼
+print(source_text)</code></pre></div>
+
+<h3 id="toc_4">擷取動態網頁</h3>
 
 <ul>
-<li>可使用 <a href="lxml_sample.html">lxml</a></li>
+<li>使用 <a href="http://ithelp.ithome.com.tw/articles/10185964">selenium</a> 取得網頁原始碼</li>
+<li>如果我們用 <code>requests</code> 取得網頁原始碼，會發現原始碼並沒有動態網頁呈現的內容。這是因為動態網頁的內容是由程式運算後從資料庫取得，不像靜態網頁是固定的內容。</li>
+<li>基本流程：</li>
 </ul>
+
+<div><pre><code class="language-none">from selenium import webdriver
+
+url = &#39;http://24h.pchome.com.tw/region/DRAA&#39;
+driver = webdriver.Firefox()
+driver.get(url)
+source_text = driver.page_source # 取得網頁原始碼
+print(source_text)
+driver.quit()</code></pre></div>
+
+<h3 id="toc_5">分析網頁 (parsing)</h3>
+
+<ul>
+<li>可使用 <a href="lxml_sample.html">lxml</a> </li>
+<li>基本流程:</li>
+</ul>
+
+<div><pre><code class="language-none">from lxml import etree
+
+html = etree.HTML(source_text) # 將之前擷取的網頁原始碼轉成 etree 元素</code></pre></div>
+
+<p><a name = 'getimage'></a></p>
+
+<h2 id="toc_6">抓取圖片</h2>
+
+<ul>
+<li>基本流程</li>
+</ul>
+
+<div><pre><code class="language-none">import requests
+from PIL import Image
+from io import BytesIO
+
+img_url = &#39;https://i2.bahamut.com.tw/baha_logo5.png&#39;
+response = requests.get(img_url)
+img = Image.open(BytesIO(response.content))
+img.save(&#39;img.png&#39;)</code></pre></div>
 
 
 

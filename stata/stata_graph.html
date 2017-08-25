@@ -387,24 +387,24 @@ kbd {
 <h2 id="toc_3">example 3</h2>
 
 <ul>
-<li>畫出 <code>month</code> 的平均值。
-<code>
-. graph bar month
-. graph export month1.png, replace width(600) height(450)
-</code>
-<img src="figs/stata_month1.png" alt=""></li>
+<li>畫出 <code>month</code> 的平均值。</li>
 </ul>
+
+<div><pre><code class="language-none">. graph bar month
+. graph export month1.png, replace width(600) height(450)</code></pre></div>
+
+<p><img src="figs/stata_month1.png" alt=""></p>
 
 <h2 id="toc_4">example 4</h2>
 
 <ul>
-<li>將資料以 <code>month</code> 分群，畫出每一群的占比。
-<code>
-. graph bar, over(month)
-. graph export month2.png, replace width(600) height(450)
-</code>
-<img src="figs/stata_month2.png" alt=""></li>
+<li>將資料以 <code>month</code> 分群，畫出每一群的占比。</li>
 </ul>
+
+<div><pre><code class="language-none">. graph bar, over(month)
+. graph export month2.png, replace width(600) height(450)</code></pre></div>
+
+<p><img src="figs/stata_month2.png" alt=""></p>
 
 <h2 id="toc_5">example 5</h2>
 
