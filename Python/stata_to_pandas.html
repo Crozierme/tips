@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>stata_to_pandas</title>
 
 
 <style type="text/css">
@@ -328,70 +328,66 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h2 id="toc_0">stata to pandas</h2>
+
+<table>
+<thead>
+<tr>
+<th>stata</th>
+<th>pandas</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>tab var1</code></td>
+<td><code>pd.var1.value_counts()</code></td>
+</tr>
+<tr>
+<td><code>drop var1 var2</code></td>
+<td><code>df.drop([&#39;var1&#39;, &#39;var2], axis =1)</code></td>
+</tr>
+<tr>
+<td><code>keep var1 var2</code></td>
+<td><code>df[[var1, var2]]</code></td>
+</tr>
+<tr>
+<td><code>drop if conditions</code></td>
+<td><code>df.drop(df[conditions].index)</code></td>
+</tr>
+<tr>
+<td><code>keep if conditions</code></td>
+<td><code>df[conditions]</code></td>
+</tr>
+<tr>
+<td><code>sort var1 var2</code></td>
+<td><code>df.sort_values([&#39;var1&#39;, &#39;var2&#39;])</code></td>
+</tr>
+<tr>
+<td><code>gsort var1 -var2</code></td>
+<td><code>df.sort_values([&#39;var1&#39;, &#39;var2&#39;], ascending = [True, False])</code></td>
+</tr>
+<tr>
+<td><code>rename oldname newname</code></td>
+<td><code>df.rename(columns = {&#39;oldname&#39;:&#39;newname&#39;})</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_1">merge</h3>
 
 <ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">stata</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
+<li>stata: <code>merge m:1 keys using usingdata</code> </li>
+<li><p>pandas: <code>pd.merge(leftdf, rightdf, how = &#39;outer&#39;, on = [keys])</code> </p></li>
 </ul>
 
-<hr>
-
-<p><a name="Python"></a> </p>
-
-<h2 id="toc_1">Python</h2>
-
-<ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 快速入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_select_in_pd.html">select data in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-</ul>
-
-<p><a name = "stata"></a></p>
-
-<h2 id="toc_2">stata</h2>
-
-<ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_3">oTree</h2>
-
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_4">QGIS</h2>
-
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_5">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
-</ul>
+<ol>
+<li>stata 的 <code>merge</code> 必須註明 <code>m:1</code> 或 <code>1:m</code>， pandas 不用。</li>
+<li><code>how = &#39;left&#39;</code>, 只保留來自 <code>leftdf</code> 的資料<br></li>
+<li><code>how = &#39;right&#39;</code>, 只保留來自 <code>rightdf</code> 的資料</li>
+<li><code>how = &#39;inner&#39;</code>, 保留同時出現在 <code>leftdf</code> 與 <code>rightdf</code> 的資料</li>
+<li><code>how = &#39;outer&#39;</code>, 保留所有資料</li>
+</ol>
 
 
 
