@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>regexp</title>
 
 
 <style type="text/css">
@@ -328,70 +328,96 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h2 id="toc_0">正規表達式</h2>
+
+<h3 id="toc_1">什麼是 regular expression?</h3>
+
+<p>我們在處理文本資料時，常會遇到需要判斷或找出資料裡是否有符合特定規則的字串。如何讓電腦能正確地找出字串，取決於我們能否精確地表達該字串的「規則」。正規表達式，就是用來表達字串規則的語法。</p>
+
+<h3 id="toc_2">一個字元接一個字元地比對</h3>
+
+<p>&quot;尋找/取代&quot; 就是正規表達式最常見的應用。請試著開啟一個網頁，找出該網頁是否有 <code>abc</code> 這個字串。</p>
+
+<p>不過，在學習正規表達式時，請不要將 <code>abc</code> 看成一個單位，而應該將其理解為 <code>a</code>，然後接著 <code>b</code>，然後接著 <code>c</code>，是三個有次序的字元。</p>
+
+<p>比對時，電腦並不是去找 <code>abc</code> 這個字，而是先找到 <code>a</code>，再看是否接著 <code>b</code>，再看是否接著 <code>c</code>。如果都是，表示找到所要的字串。</p>
+
+<p>雖然直接找 <code>abc</code> 跟依序找 <code>a</code>、<code>b</code>、<code>c</code>得到的結果都一樣，但是在下一節的例子裡，用「一個接一個比對」的方式，比較容易理解其意義。</p>
+
+<h3 id="toc_3">開頭<code>^</code>與結尾<code>$</code></h3>
+
+<p>本節介紹兩個特別的字元：<code>^</code>表示找出文本的開頭，<code>$</code>表示找出文本的結尾。</p>
+
+<p>我們該怎麼理解 <code>^a</code> 與 <code>a$</code> 呢？</p>
+
+<p>根據「一個接一個比對」的解讀，<code>^a</code>表示先找到文本的開頭，然後看是否接著<code>a</code>；而<code>a$</code>的意思表示先找到<code>a</code>，再看是否接著文本的結尾。</p>
+
+<p>因此，如果對 abcabcabc 搜尋<code>^abc</code>會得到第一個abc；搜尋<code>abc$</code>會得到第三個abc；搜尋<code>^abc$</code>則找不到任何東西。</p>
+
+<h3 id="toc_4">字元的集合<code>[...]</code>、<code>[^...]</code></h3>
+
+<p>中括號夾著一串字元時<code>[...]</code>，只被視為一個字元，稱為 character class，在比對時，只要找到中括號裡的任一個字元即可。</p>
+
+<p>舉例來說，<code>[aA]bc</code>表示先找到<code>a</code>或<code>A</code>都可以，再看是否接著 <code>b</code>，再看是否接著<code>c</code>。</p>
+
+<p><code>[^...]</code> 則表示只要「不是」中括號裡的任一個字元即可，舉例來說，<code>[^aA]</code>表示找出不是<code>a</code>也不是<code>A</code>的字元。</p>
+
+<p>注意，中括號裡的<code>^</code>跟上一節的開頭符號相同，但是被放在中括號時，有不同的意義。</p>
+
+<h3 id="toc_5">字元範圍 <code>-</code></h3>
+
+<p>由上節說明我們知道，<code>[12345]</code>表示找到 1 到 5 的任一個數字即可，像這樣連續範圍的字元集合，可以用 <code>-</code> 來簡化，寫成 <code>[1-5]</code>。</p>
+
+<h3 id="toc_6">任意字元<code>.</code></h3>
+
+<p><code>.</code> 用來表示任意字元，譬如<code>a.c</code>表示先找到<code>a</code>，再看是否緊接著任一個字元，再看是否接著<code>c</code>。</p>
+
+<h3 id="toc_7">或 <code>|</code></h3>
+
+<p>任意兩個正規表達式，可以用<code>|</code>連接，表示找出兩者之一即可。譬如 <code>abc|Abc</code>表示找出<code>abc</code>或者<code>Abc</code>。</p>
+
+<h3 id="toc_8">組合<code>(...)</code></h3>
+
+<p>要將兩個正規表達式組合成一個新的正規表達式單元，可以用<code>(...)</code>將它們包起來。譬如 <code>(ab|Ab)c</code>，小括號表示先找到<code>ab</code>或<code>Ab</code>，再看是否接著<code>c</code>。</p>
+
+<p>綜合以上，可知以下幾種正規表達式意思完全相同：</p>
 
 <ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">stata</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
+<li><code>[aA]bc</code></li>
+<li><code>abc|Abc</code></li>
+<li><code>(ab|Ab)c</code></li>
+<li><code>(a|A)bc</code></li>
 </ul>
 
-<hr>
+<h3 id="toc_9">可有可無<code>?</code></h3>
 
-<p><a name="Python"></a> </p>
+<p>若在一個正規表達式單元之後加<code>?</code>，表示有沒有找到這個單元都可以。譬如<code>jpge?</code>表示找出<code>jpg</code>或<code>jpge</code>都可以。<code>do(es)?</code>表示找出<code>do</code>或<code>does</code>都可以。</p>
 
-<h2 id="toc_1">Python</h2>
+<h3 id="toc_10">至少連續接著一個以上<code>+</code></h3>
 
-<ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 快速入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_select_in_pd.html">select data in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-</ul>
+<p>若在一個正規表達式單元之後加<code>+</code>，表示這個單元一定要連續接著出現至少一次以上。譬如<code>abc+</code>，表示<code>ab</code>之後一定要馬上緊接著一個以上的<code>c</code>，像是<code>abc</code>、<code>abccc</code>都可以。</p>
 
-<p><a name = "stata"></a></p>
+<h3 id="toc_11">可以連續接著一個以上，沒有也沒關係<code>*</code></h3>
 
-<h2 id="toc_2">stata</h2>
+<p>若在一個正規表達式單元之後加<code>*</code>，表示這個單元可以緊接著出現好幾次，不過沒有也沒關係。譬如<code>abc*</code>，表示<code>ab</code>之後可以接著一串<code>c</code>，也可以沒有<code>c</code>。因此<code>ab</code>或<code>abccc</code>都算是符合規則的字串。</p>
 
-<ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
+<h3 id="toc_12">最少 n 個，最多 m 個<code>{n,m}</code></h3>
 
-<p><a name = "oTree"></a></p>
+<p>若在一個正規表達式單元之後加<code>{n,m}</code>，表示這個單元可以緊接著出現 n 到 m 次。譬如 <code>abc{1,3}</code>，表示<code>ab</code>之後可以緊接著 1 到 3 個<code>c</code>。</p>
 
-<h2 id="toc_3">oTree</h2>
+<h3 id="toc_13">剛剛好有 n 個<code>{n}</code></h3>
 
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
+<p>若在一個正規表達式單元之後加<code>{n}</code>，表示這個單元緊接著出現剛好 n 次。譬如 <code>abc{3}</code>，表示<code>ab</code>之後只能接剛好 3 個<code>c</code>，所以<code>abccc</code>符合規則，但<code>abcccccc</code>則不符合。</p>
 
-<p><a name = "QGIS"></a></p>
+<h3 id="toc_14">至少有 n 個<code>{n,}</code></h3>
 
-<h2 id="toc_4">QGIS</h2>
+<p>若在一個正規表達式單元之後加<code>{n,}</code>，表示這個單元緊接著出現至少 n 次。譬如 <code>abc{3}</code>，表示<code>ab</code>之後最少要有 3 個<code>c</code>。</p>
 
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
+<h3 id="toc_15">從字串的開頭或結尾開始比對<code>?=</code>, <code>?&lt;=</code></h3>
 
-<p><a name = "MySQLonMac"></a></p>
+<p><code>(?=abc)</code>表示找出<code>abc</code>字串開頭的位置。這只會標註<code>abc</code>的開頭位置，而不是真的找出<code>abc</code>。<code>(?=abc)abc</code>表示先找出<code>abc</code>開頭的位置，再看是否依序接著<code>a</code>、<code>b</code>、<code>c</code>。因此，如果對 abcdef 搜尋<code>(?=abc)abc</code>，會得到 abc；搜尋<code>(?=abc)def</code>則找不到東西。</p>
 
-<h2 id="toc_5">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
-</ul>
+<p><code>(?&lt;=abc)</code>則是找出<code>abc</code>字串結尾的位置。<code>(?&lt;=abc)abc</code>表示先找出<code>abc</code>結尾的位置，再看是否依序接著<code>a</code>、<code>b</code>、<code>c</code>。因此，如果對 abcdef 搜尋<code>(?&lt;=abc)abc</code>，會找不到東西；搜尋<code>(?&lt;=abc)def</code>，則會得到 def。</p>
 
 
 
