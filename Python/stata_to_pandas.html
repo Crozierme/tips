@@ -345,7 +345,7 @@ kbd {
 </tr>
 <tr>
 <td><code>drop var1 var2</code></td>
-<td><code>df.drop([&#39;var1&#39;, &#39;var2], axis =1)</code></td>
+<td><code>df.drop([var1, var2], axis =1)</code></td>
 </tr>
 <tr>
 <td><code>keep var1 var2</code></td>
@@ -361,18 +361,59 @@ kbd {
 </tr>
 <tr>
 <td><code>sort var1 var2</code></td>
-<td><code>df.sort_values([&#39;var1&#39;, &#39;var2&#39;])</code></td>
+<td><code>df.sort_values([var1, var2])</code></td>
 </tr>
 <tr>
 <td><code>gsort var1 -var2</code></td>
-<td><code>df.sort_values([&#39;var1&#39;, &#39;var2&#39;], ascending = [True, False])</code></td>
+<td><code>df.sort_values([var1, var2], ascending = [True, False])</code></td>
 </tr>
 <tr>
 <td><code>rename oldname newname</code></td>
-<td><code>df.rename(columns = {&#39;oldname&#39;:&#39;newname&#39;})</code></td>
+<td><code>df.rename(columns = {oldname:newname})</code></td>
+</tr>
+<tr>
+<td><code>gen var1 = 1 if conditions</code></td>
+<td><code>df.loc[df[conditions], var1] = 1</code></td>
+</tr>
+<tr>
+<td><code>replace var1 = 1 if conditions</code></td>
+<td><code>df.loc[df[conditions], var1] = 1</code></td>
+</tr>
+<tr>
+<td><code>duplicates drop</code></td>
+<td><code>df.drop_duplicates()</code></td>
+</tr>
+<tr>
+<td><code>duplicates drop var1 var2, force</code></td>
+<td><code>df.drop_duplicates([var1, var2])</code></td>
+</tr>
+<tr>
+<td><code>duplicates list</code></td>
+<td><code>df[df.duplicated(keep = False)</code>]</td>
+</tr>
+<tr>
+<td><code>duplicates list var1 var2</code></td>
+<td><code>df[df.duplicated([var1 var2], keep = False)</code>]</td>
 </tr>
 </tbody>
 </table>
+
+<ul>
+<li><p><code>df.drop_duplicates(keep = ...)</code></p>
+
+<ul>
+<li><code>keep = &quot;first&quot;</code>: 保留第一次出現的紀錄</li>
+<li><code>keep = &quot;last&quot;</code>: 保留最後一次出現的紀錄</li>
+<li><code>keep = False</code>: 刪除所有重複出現的紀錄</li>
+</ul></li>
+<li><p><code>df.duplicated(keep = ...)</code></p>
+
+<ul>
+<li><code>keep = &quot;first&quot;</code>: 除了第一次出現的紀錄外，都標示為複本</li>
+<li><code>keep = &quot;last&quot;</code>: 除了最後一次出現的紀錄外，都標示為複本</li>
+<li><code>keep = False</code>: 所有記錄都標示為複本</li>
+</ul></li>
+</ul>
 
 <h3 id="toc_1">merge</h3>
 
