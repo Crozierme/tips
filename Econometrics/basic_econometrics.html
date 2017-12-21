@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>basic_econometrics</title>
 
 
 <style type="text/css">
@@ -328,84 +328,31 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h3 id="toc_0">隨機樣本與估計式</h3>
 
 <ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">stata</a></li>
-<li><a href="#Econometrics">Econometrics</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
+<li><p>本節內容參考管老師統計學第七章</p></li>
+<li><p>隨機樣本：根據某一隨機機制(分配)選出的樣本，樣本中任一觀察值都不會影響其他觀察值發生的機率。與隨機樣本相對應的隨機變數，不僅互相獨立且有相同分配。</p></li>
+<li><p>統計量：給定一組隨機變數 \(\{X_1, ..., X_n\}\)，這些隨機變數所構成的函數稱為統計量。</p></li>
+<li><p>點估計：給定一組隨機變數 \(\{X_1, ..., X_n\}\) 及其實現值 \(\{a_1, ..., a_n\}\)，對某一未知參數 \(\theta_o\) 的點估計式 \(h(X_1, ..., X_n)\) 為一統計量，且為隨機變數，而點估計值 \(h(a_1, ..., a_n)\) 則為其特定的實現值。</p></li>
+<li><p>不偏性(unbiasedness)：令 \(\widehat\theta_n\) 為 \(\theta_o\) 的點估計式，若 \[E(\widehat\theta_n) = \theta_o, \] 則 \(\widehat\theta_n\) 為 \(\theta_o\) 的不偏估計式。</p></li>
+<li><p>有效性(efficiency)：估計式與真正參數的均方誤為 
+\[MSE(\widehat\theta)=E(\widehat\theta - \theta_o)^2 = var(\widehat\theta) + [E(\widehat\theta) - \theta_o]^2, \]
+對於兩個點估計式 \(\widehat\theta\) 與 \(\widetilde{\theta}\)，若 \(MSE(\widehat\theta) &lt; MSE(\widetilde{\theta})\)，則 \(\widehat\theta\) 比 \(\widetilde{\theta}\) 更有效。</p></li>
+<li><p>一致性(consistency)：對任意小的正實數 \(\epsilon\)，若 \[\lim_{n\rightarrow\infty}P(|\widehat\theta_n - \theta_o|\leq \epsilon) = 1,\] 此時我們稱 \(\theta_n\) 為 \(\theta_o\) 的一致估計式。</p></li>
+<li><p>綜合言之，不偏性表示估計式的期望值為真正參數；有效性表示平均而言，估計值與真正參數的距離越近越好；一致性表示樣本越大，估計值越接近真正參數。</p></li>
 </ul>
 
-<hr>
-
-<p><a name="Python"></a> </p>
-
-<h2 id="toc_1">Python</h2>
+<h3 id="toc_1">卡方檢定</h3>
 
 <ul>
-<li>pandas
+<li>以下各種檢定皆使用卡方分配：
 
 <ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 十分鐘入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/stata_to_pandas.html">stata to pandas</a></li>
+<li>配適度檢定：檢定樣本是否來自某特定的分配。</li>
+<li>獨立性檢定：檢定兩隨機變數是否獨立。</li>
+<li>同質性檢定：檢定兩組樣本是否來自相同母體。</li>
 </ul></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-<li><a href="Python/regexp.html">正規表達式</a></li>
-</ul>
-
-<p><a name = "stata"></a></p>
-
-<h2 id="toc_2">stata</h2>
-
-<ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
-
-<p><a name = "Econometrics"></a></p>
-
-<h2 id="toc_3">Econometrics</h2>
-
-<ul>
-<li><a href="Econometrics/basic_econometrics.html">基本</a></li>
-<li><a href="Econometrics/DiscreteChoiceModel.html">Discrete Choice Model</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
-
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_5">QGIS</h2>
-
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_6">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
 </ul>
 
 

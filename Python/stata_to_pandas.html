@@ -345,31 +345,31 @@ kbd {
 </tr>
 <tr>
 <td><code>drop var1 var2</code></td>
-<td><code>df.drop([var1, var2], axis =1)</code></td>
+<td><code>df = df.drop([var1, var2], axis =1)</code></td>
 </tr>
 <tr>
 <td><code>keep var1 var2</code></td>
-<td><code>df[[var1, var2]]</code></td>
+<td><code>df = df[[var1, var2]]</code></td>
 </tr>
 <tr>
 <td><code>drop if conditions</code></td>
-<td><code>df.drop(df[conditions].index)</code></td>
+<td><code>df = df.drop(df[conditions].index)</code></td>
 </tr>
 <tr>
 <td><code>keep if conditions</code></td>
-<td><code>df[conditions]</code></td>
+<td><code>df = df[conditions]</code></td>
 </tr>
 <tr>
 <td><code>sort var1 var2</code></td>
-<td><code>df.sort_values([var1, var2])</code></td>
+<td><code>df = df.sort_values([var1, var2])</code></td>
 </tr>
 <tr>
 <td><code>gsort var1 -var2</code></td>
-<td><code>df.sort_values([var1, var2], ascending = [True, False])</code></td>
+<td><code>df = df.sort_values([var1, var2], ascending = [True, False])</code></td>
 </tr>
 <tr>
 <td><code>rename oldname newname</code></td>
-<td><code>df.rename(columns = {oldname:newname})</code></td>
+<td><code>df = df.rename(columns = {oldname:newname})</code></td>
 </tr>
 <tr>
 <td><code>gen var1 = 1 if conditions</code></td>
@@ -381,11 +381,11 @@ kbd {
 </tr>
 <tr>
 <td><code>duplicates drop</code></td>
-<td><code>df.drop_duplicates()</code></td>
+<td><code>df = df.drop_duplicates()</code></td>
 </tr>
 <tr>
 <td><code>duplicates drop var1 var2, force</code></td>
-<td><code>df.drop_duplicates([var1, var2])</code></td>
+<td><code>df = df.drop_duplicates([var1, var2])</code></td>
 </tr>
 <tr>
 <td><code>duplicates list</code></td>
@@ -393,7 +393,15 @@ kbd {
 </tr>
 <tr>
 <td><code>duplicates list var1 var2</code></td>
-<td><code>df[df.duplicated([var1 var2], keep = False)</code>]</td>
+<td><code>df[df.duplicated([var1 var2], keep = False)]</code></td>
+</tr>
+<tr>
+<td><code>replace var = var[_n-1]</code></td>
+<td><code>for i in range(len(df)):</code> <br>&nbsp;&nbsp;&nbsp;&nbsp;<code>df.iloc[i][var] = df.iloc[i-1][var]</code></td>
+</tr>
+<tr>
+<td><code>sort var1 var2</code><br><code>by var1: replace var2 = var2[_n-1]</code></td>
+<td><code>df = df.sort_values([var1, var2])</code><br> <code>for i in range(len(df)):</code><br>&nbsp;&nbsp;&nbsp;&nbsp;<code>if df.iloc[i][[var1]].equals(df.iloc[i-1][[var1]]):</code><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>df.iloc[i][var2] = df.iloc[i-1][var2]</code></td>
 </tr>
 </tbody>
 </table>
@@ -429,6 +437,10 @@ kbd {
 <li><code>how = &#39;inner&#39;</code>, 保留同時出現在 <code>leftdf</code> 與 <code>rightdf</code> 的資料</li>
 <li><code>how = &#39;outer&#39;</code>, 保留所有資料</li>
 </ol>
+
+<h3 id="toc_2">CSV parse error</h3>
+
+<p>python 解析 CSV 時，可能會與 stata 有不同結果。尤其內容出現 &quot;` 時。</p>
 
 
 
