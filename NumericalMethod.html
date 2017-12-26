@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>NumericalMethod</title>
 
 
 <style type="text/css">
@@ -328,113 +328,45 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h2 id="toc_0">Numerical Method</h2>
 
-<ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">Stata</a></li>
-<li><a href="#Econometrics">Econometrics</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#NumericalMethod">Numerical Method</a></li>
-<li><a href="#Fortran">Fortran</a></li>
-<li><a href="#Matlab">Matlab</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
-</ul>
+<h3 id="toc_1">電腦如何儲存數值？</h3>
 
-<hr>
+<p>電腦只能用 0, 1 的兩進位儲存數值，我們輸入的數值，都要轉換成二進位才能儲存。所謂的十進位轉化成二進位，意思是說對任一個十進位數值 \(N\)，找出一組有限的數列 \(\{a_n,..., a_1, a_0, a_{-1}, ..., a_{-m} \}\)，每個 \(a\in\{0, 1\}\)，使得 
+\[N = a_n 2^n +...+a_1 2^1 + a_0 2^0 + a_{-1} 2^{-1} + ... + a_{-m} 2^{-m} \]</p>
 
-<p><a name="Python"></a> </p>
+<p>所有的整數都可以用兩進位表示。首先將整數除以 2，所得餘數為 \(a_0\)；將商數除以 2，所得餘數為 \(a_1\)；重複以上步驟，直到商數為 0。以十進位數 21 為例，
+\[
+\begin{align}
+21/2 &amp; = 10...1 \\
+10/2 &amp; =  5...0 \\
+5/2 &amp; = 2...1\\
+2/2 &amp; = 1...0\\
+1/2 &amp; = 0...1
+\end{align}
+\]
+因此十進位數 21 的二進位表示法為 10101。</p>
 
-<h2 id="toc_1">Python</h2>
+<p>將小數表達成二進位的方法如下，首先將小數乘以 2，乘積的整數部分為 \(a_{-1}\)，將乘積的小數部分取出再乘以 2，新乘積的整數部分為 \(a_{-2}\)；重複以上步驟，直到乘績的小數部分為 0。以十進位小數 0.375 為例，
+\[
+\begin{align}
+0.375 * 2 &amp;= 0 + 0.75 \\
+0.75 * 2 &amp;= 1 + 0.5 \\
+0.5 * 2 &amp;= 1 + 0 
+\end{align}
+\]
+因此十進位數 0.375 的二進位表示法為 0.011。</p>
 
-<ul>
-<li>pandas
-
-<ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 十分鐘入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/stata_to_pandas.html">stata to pandas</a></li>
-</ul></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-<li><a href="Python/regexp.html">正規表達式</a></li>
-</ul>
-
-<p><a name = "stata"></a></p>
-
-<h2 id="toc_2">Stata</h2>
-
-<ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
-
-<p><a name = "Econometrics"></a></p>
-
-<h2 id="toc_3">Econometrics</h2>
-
-<ul>
-<li><a href="Econometrics/basic_econometrics.html">基本</a></li>
-<li><a href="Econometrics/MLE.html">MLE</a></li>
-<li><a href="Econometrics/DiscreteChoiceModel.html">Discrete Choice Model</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
-
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name="NumericalMethod"></a> </p>
-
-<h2 id="toc_5">Numerical Method</h2>
-
-<ul>
-<li><a href="NumericalMethod.html">Numerical Method</a></li>
-</ul>
-
-<p><a name="Fortran"></a> </p>
-
-<h2 id="toc_6">Fortran</h2>
-
-<ul>
-<li><a href="Fortran.html">Fortran</a></li>
-</ul>
-
-<p><a name="Matlab"></a> </p>
-
-<h2 id="toc_7">Matlab</h2>
-
-<ul>
-<li><a href="Matlab.html">Matlab</a></li>
-</ul>
-
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_8">QGIS</h2>
-
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_9">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
-</ul>
+<p>並不是所有小數都能用有限數列表示成二進位，以 0.6 為例，
+\[
+\begin{align}
+0.6 * 2 &amp;= 1 + 0.2 \\
+0.2 * 2 &amp;= 0 + 0.4 \\
+0.4 * 2 &amp;= 0 + 0.8 \\
+0.8 * 2 &amp;= 1 + 0.6 
+\end{align}
+\]
+我們發現 0.6 用二進位表示為 \(0. \overline{1001}\)，是一個循環小數。但電腦無法處理無限數列，所以我們必須告訴電腦要多精確。若只取小數點後四位 0.1001，則換算成十位數是 0.5625；若取到小數點後八位 0.10011001，則換算成十位數是 0.59765625。</p>
 
 
 

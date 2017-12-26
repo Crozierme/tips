@@ -328,7 +328,7 @@ kbd {
 
 <body>
 
-<h3 id="toc_0">Discrete Choice Model</h3>
+<h1 id="toc_0">Discrete Choice Model</h1>
 
 <ul>
 <li>https://www2.warwick.ac.uk/fac/soc/economics/staff/ffwaldinger/teaching/ec9a8/slides/topic_1.pdf</li>
@@ -342,7 +342,7 @@ kbd {
 
 <p>我們將商品定義為一些特性(characteristics)的集合(bundles)，並定義消費者的效用來自這些特性，而不是商品本身。這樣定義效用有幾個好處，首先，真實世界的商品種類繁多，當我們在估計商品的需求與交叉彈性時，會讓問題的維度膨脹。譬如有 \(J\) 種商品，就有 \(J^2\) 個彈性。但是商品特性一般而言比商品數量的維度較低，可以簡化問題。其次，若我們將效用直接定義在商品上，當市場上出現全新商品時，我們無法評估它的需求。</p>
 
-<h4 id="toc_1">random utility model (RUM)(McFadden)</h4>
+<h2 id="toc_1">random utility model (RUM)(McFadden)</h2>
 
 <p>令 \(U_{ij}\) 表示消費者 \(i\) 選擇商品 \(j\) 的效用。假設有 \(j = 1...J\) 種商品可選， \(i\) 會從中選擇效用最高的商品。\(U_{ij}\) 取決於 \(i\) 的特性，\(j\) 的特性，以及兩者的交互作用。計量學家可以掌握一部分資訊，但並不是全部。因此計量學家將 \(U_{ij}\) 拆解成兩部分，一部分是已知的 \(V_{ij}\)；一部分是未知的，隨機的 \(\epsilon_{ij}\)：\[U_{ij} = V_{ij} + \epsilon_{ij}\]</p>
 
@@ -355,21 +355,21 @@ kbd {
 
 <p>第二，\(P_{ij}\) 與效用的 scale 無關，若在將 \(U_{i1}...U_{iJ}\) 同乘常數 \(a\)，可得 \(Pr(aU_{ij} \geq aU_{ik}) = Pr(U_{ij} \geq U_{ik})\)。同樣地，我們也需要將效用的 scale 標準化。</p>
 
-<h4 id="toc_2">conditional logit model</h4>
+<h2 id="toc_2">conditional logit model</h2>
 
 <p>conditional logit model (clogit) 假設 \(\epsilon_{i1}...\epsilon_{iJ}\) 為 i.i.d. 的 Extreme Value Type I 分配(又稱 Gumbel 分配)，且將 \(\epsilon\) 標準化，令其 CDF 為 \[F(\epsilon) = \exp[-e^{-x}]，\]此分配的變異數為 \(\pi^2/6\)，則\[P_{ij} = \frac{e^{V_{ij}}}{\sum_{k=1}^J e^{V_{ik}}}，\]
 若將效用為 0 的 outside good 放入模型，意即 \(V_{i0} = 0\)，則
 \[P_{ij} = \frac{e^{V_{ij}}}{1+\sum_{k=1}^J e^{V_{ik}}}。\]
 若我們假設 \(i\) 是連續且同質的，則可以推導出商品 \(j\) 的 market share \(s_j = P_{ij}\)。</p>
 
-<h5 id="toc_3">Independence of Irrelevant Alternatives(IIA)</h5>
+<h3 id="toc_3">Independence of Irrelevant Alternatives(IIA)</h3>
 
 <p>clogit 模型有 IIA 的特性，意思是說購買商品 \(j\), \(k\) 的相對機率或相對市佔率(odds ratio)，只跟 \(j\), \(k\) 有關，與消費者有多少其他選擇無關。
-\[\frac{p_{ij}}{p_{ik}} = \frac{\exp(V_{ij})}{\exp(V_{ik})}。\]</p>
+\[\frac{P_{ij}}{P_{ik}} = \frac{\exp(V_{ij})}{\exp(V_{ik})}。\]</p>
 
 <p>IIA 的特性表示，如果我們引入新的產品，不會影響原先產品的相對市佔率。我們可以舉一個紅藍公車的例子來說明 IIA 會造成什麼問題。假設消費者原先只有兩個選項：走路或搭紅色公車去上班。如果消費者選擇走路或搭紅色公車的時間剛好一半一半，則 \(s_{iw} = s_{ir} = 0.5\)。odds ratio \(s_{iw}/s_{ir} = 1\)。現在客運公司新增一台藍色公車跑同樣的路線，根據 IIA， odds ratio \(s_{iw}/s_{ir}\) 還是為 1。但藍色公車與紅色公車為完全替代，消費者一樣花一半時間坐公車，一半時間走路，則時間分配應該為 \(s_{iw} = 0.5\)， \(s_{ir}= s_{ib} = 0.25\)。新的 odds ratio \(s_{iw}/s_{ir}\) 應該為 2。故如果引入新產品，IIA 特性會對新產品的預測產生問題。</p>
 
-<h5 id="toc_4">價格彈性</h5>
+<h3 id="toc_4">價格彈性</h3>
 
 <p>假設 \(V_{ij} = -\alpha p_j + x_j\beta\)。則
 \[\frac{\partial s_{j}}{\partial p_j} = \left(\frac{e^{V_{ij}}}{\sum_{k=1}^J e^{V_{ik}}}\right)(-\alpha) - \frac{e^{V_{ij}}}{\left(\sum_{k=1}^J e^{V_{ik}}\right)^2}e^{V_{ij}}(-\alpha) = -\alpha s_{j} + \alpha s_{j}^2 = -\alpha s_{j}(1-s_{j})\]</p>
@@ -383,7 +383,7 @@ kbd {
 
 <p>這表示商品 \(j\) 對所有商品 \(k\) 的交叉彈性都是一樣的，只跟 \(j\) 自己的市佔率以及價格有關，與 \(j\), \(k\) 之間的相似性無關。 </p>
 
-<h4 id="toc_5">likelihood function</h4>
+<h3 id="toc_5">likelihood function</h3>
 
 <p>根據消費者一次只購買一種商品的假設，可得 \(\sum_{j=1}^J y_{ij} = 1\)。
 欲估計的 likelihood function 為
@@ -397,7 +397,14 @@ kbd {
 \end{aligned}
 \]</p>
 
-<h4 id="toc_6">Nested logit model</h4>
+<p>某些時候，可能存在某些 \(i, j, k, l\) 使得 \(P_{ij} = P_{kl}\)，則我們可以簡化 log-likelihood function。令 \(\{P&#39;_1,...,P&#39;_M\} = \cup \{ P_{ij} \}\)，\(c_m\) 表示 \(P&#39;_m\) 出現的次數，則 likelihood function
+\[\prod_{i=1}^I\prod_{j=1}^J P_{ij}^{y_{ij}} = \prod_{m=1}^M {P&#39;_m}^{c_m}\]
+取 \(ln\) 可得 log-likelihood function 為
+\[\sum_m c_m \ln P&#39;_m\]
+根據 \(P&#39;_m\) 的定義，可以找到一組 \(i,j\) 使得 \(P&#39;_m = P_{ij}\)，故可得
+\[\sum_m c_m \ln P&#39;_m = \sum_m c_m \left(V_{ij}-\ln \left( \sum_{k=1}^J e^{V_{ik}} \right) \right)\]</p>
+
+<h2 id="toc_6">Nested logit model</h2>
 
 <p>若我們認為某些商品在消費者心中較為相似，則不能再假設 \(\epsilon_{i1}...\epsilon_{iJ}\) 為 i.i.d.。nlogit 模型將類似的商品分門別類，在同一類商品裡，IIA 成立，任意兩個同類商品的相對市佔率與其他同類商品無關；而兩個不同類的商品，IIA 不成立，它們的相對市佔率與商品的特性有關。</p>
 
@@ -410,6 +417,10 @@ kbd {
 
 <p>\(\tau_g\in[0, 1]\) 用來衡量 \(B_g\) 類別裡，不同商品之間的不相似性，\(\tau_g\) 越大，表示商品越獨立，越沒有相關性。\(\tau_g = 1\)，表示 \(B_g\) 類別裡的商品完全無關。若所有類別的 \(\tau_g\) 都是 1，表示所有商品都是彼此獨立的，等同於 clogit 模型。也有些人會用 \(\rho_g = 1-\tau_g\) 或 \(\mu_g = 1/\tau_g\) 來表示相關性，\(\rho_g\) 或 \(\mu_g\) 越大表示商品越有相關性。</p>
 
+<p>根據 \(\tau_g\) 的定義，也有些人會將 \(\epsilon_{ij}\) 拆解成
+\(\epsilon_{ij} = \zeta_{ig} + \tau_g\delta_{ij}\)，
+使得 \(\delta_{i1}...\delta_{iJ}\) 為 i.i.d。</p>
+
 <p>在上述的 CDF 之下，可得 
 \[Pr(c_{i} = j | c_i \in B_g) = \frac{e^{V_{ij}/\tau_g}}{\sum_{k\in B_g}e^{V_{ik}/\tau_g}}\]
 \[Pr(c_i\in B_g) = \frac{\left(\sum_{k\in B_g}e^{V_{ik}/\tau_g}\right)^{\tau_g}}{\sum_{m=1}^G\left(\sum_{k\in B_m}e^{V_{ik}/\tau_m}\right)^{\tau_m}} \]
@@ -417,7 +428,7 @@ kbd {
 \[\frac{P_{ij}}{P_{ik}} = \frac{e^{V_{ij}/\tau_g}\left(\sum_{m\in B_g}e^{V_{im}/\tau_g}\right)^{\tau_g-1}}{e^{V_{ik}/\tau_h}\left(\sum_{m\in B_h}e^{V_{im}/\tau_h}\right)^{\tau_h-1}}, j\in B_g, k\in B_h\]
 若 \(j\), \(k\) 來自同一個類別，意即 \(B_g = B_h\), \(\tau_g = \tau_h\)，則 \(P_{ij}/P_{ik} = e^{V_{ij}}/e^{V_{ik}}\)。意即在同一個類別內，\(j\), \(k\) 的相對市佔率與該類別內其他商品無關，IIA 成立。若 \(j\), \(k\) 來自不同類別，則相對市佔率與 \(B_g\), \(B_h\), \(\tau_g\), \(\tau_h\) 有關，但與這兩類商品以外的其他類別無關，稱為 Independence of Irrelevant Nests(IIN)。</p>
 
-<h5 id="toc_7">價格彈性</h5>
+<h3 id="toc_7">價格彈性</h3>
 
 <p>假設 \(V_{ij} = -\alpha p_j + x_j\beta\)。為了計算彈性，我們定義以下變數以方便計算：</p>
 
@@ -480,7 +491,7 @@ kbd {
 <p>若 \(j\), \(k\) 為不同類商品，則交叉彈性為
 \[\frac{\partial s_k/s_k}{\partial p_j/p_j} = \alpha p_js_j\]</p>
 
-<h4 id="toc_8">likelihood function</h4>
+<h3 id="toc_8">likelihood function</h3>
 
 <p>根據消費者一次只購買一種商品的假設，可得 \(\sum_{j=1}^J y_{ij} = 1\)。
 欲估計的 likelihood function 為
@@ -493,6 +504,13 @@ kbd {
 &amp; = \sum_i \left( y_{ij}\left(\frac{V_{ij}}{\tau_g}+(\tau_g-1)\ln W_g  \right) -\ln Q\right)
 \end{aligned}
 \]</p>
+
+<p>若同樣令 \(\{P&#39;_1,...,P&#39;_M\} = \cup \{ P_{ij} \}\)，\(c_m\) 表示 \(P&#39;_m\) 出現的次數，則 likelihood function
+\[\prod_{i=1}^I\prod_{j=1}^J P_{ij}^{y_{ij}} = \prod_{m=1}^M {P&#39;_m}^{c_m}\]
+取 \(ln\) 可得 log-likelihood function 為
+\[\sum_m c_m \ln P&#39;_m\]
+根據 \(P&#39;_m\) 的定義，可以找到一組 \(i,j\) 使得 \(P&#39;_m = P_{ij}\)，故可得
+\[\sum_m c_m \ln P&#39;_m = \sum_m c_m \left(\frac{V_{ij}}{\tau_g} + (\tau_g-1)\ln W_g - \ln Q\right)\]</p>
 
 
 

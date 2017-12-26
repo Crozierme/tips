@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>Fortran</title>
 
 
 <style type="text/css">
@@ -328,112 +328,49 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h2 id="toc_0">fortran</h2>
+
+<h3 id="toc_1">執行</h3>
+
+<ol>
+<li>將程式寫好，檔名為 test.f90</li>
+<li>在伺服器上開 terminal，切換到 test.f90 所在的資料夾。</li>
+<li>在 terminal 上執行 <code>gfortran test.f90</code></li>
+<li>執行成功，會在資料夾裡多出一個檔案 a.out</li>
+<li>在 terminal 上執行 <code>./a.out</code>，即可執行 test.f90 的內容。</li>
+</ol>
+
+<h3 id="toc_2">程式結構</h3>
 
 <ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">Stata</a></li>
-<li><a href="#Econometrics">Econometrics</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#NumericalMethod">Numerical Method</a></li>
-<li><a href="#Fortran">Fortran</a></li>
-<li><a href="#Matlab">Matlab</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
+<li>以下說明主要來自郭修伯 Introduction to Fortran</li>
 </ul>
 
-<hr>
+<div><pre><code class="language-none">program test
 
-<p><a name="Python"></a> </p>
+implicit none 
+integer a,b,c
 
-<h2 id="toc_1">Python</h2>
+b=1
+c=2
+a=b+c
+write (*,*) a
+
+stop 
+end</code></pre></div>
+
+<h3 id="toc_3">名稱</h3>
 
 <ul>
-<li>pandas
-
-<ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 十分鐘入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/stata_to_pandas.html">stata to pandas</a></li>
-</ul></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-<li><a href="Python/regexp.html">正規表達式</a></li>
+<li>program 之後指定變數名稱，本例中指定名稱為 test</li>
 </ul>
 
-<p><a name = "stata"></a></p>
-
-<h2 id="toc_2">Stata</h2>
+<h3 id="toc_4">宣告</h3>
 
 <ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
-
-<p><a name = "Econometrics"></a></p>
-
-<h2 id="toc_3">Econometrics</h2>
-
-<ul>
-<li><a href="Econometrics/basic_econometrics.html">基本</a></li>
-<li><a href="Econometrics/MLE.html">MLE</a></li>
-<li><a href="Econometrics/DiscreteChoiceModel.html">Discrete Choice Model</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
-
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name="NumericalMethod"></a> </p>
-
-<h2 id="toc_5">Numerical Method</h2>
-
-<ul>
-<li><a href="NumericalMethod.html">Numerical Method</a></li>
-</ul>
-
-<p><a name="Fortran"></a> </p>
-
-<h2 id="toc_6">Fortran</h2>
-
-<ul>
-<li><a href="Fortran.html">Fortran</a></li>
-</ul>
-
-<p><a name="Matlab"></a> </p>
-
-<h2 id="toc_7">Matlab</h2>
-
-<ul>
-<li><a href="Matlab.html">Matlab</a></li>
-</ul>
-
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_8">QGIS</h2>
-
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_9">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
+<li>fortran 要先宣告變數型態</li>
+<li>若沒有事先宣告，第一個字母為 I, J, K, L, M, N 的變數內定成整數型態，其它的變數則被當成浮點數來使用。</li>
+<li><code>implicit none</code> 關閉內建型態的功能。</li>
 </ul>
 
 

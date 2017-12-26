@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>Matlab</title>
 
 
 <style type="text/css">
@@ -328,113 +328,56 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h2 id="toc_0">Matlab</h2>
+
+<h4 id="toc_1"><code>[C,ia,ic] = unique(A)</code></h4>
 
 <ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">Stata</a></li>
-<li><a href="#Econometrics">Econometrics</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#NumericalMethod">Numerical Method</a></li>
-<li><a href="#Fortran">Fortran</a></li>
-<li><a href="#Matlab">Matlab</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
+<li>功能：將 A 裡的元素分組，相同數字分為一組。首先將 A 中不重複的元素取出並排序得到 C。ia 表示 C 的第 i 組元素，第一次出現在 A 的第 ia 個位置。ic 表示 A 裡的第 i 個元素，被分到 C 的第 ic 組。</li>
+<li>例：給定 A = [1, 5, 2, 2, 5, 1]，相同數字為一組，可以分成三組，排序之後得到 C = [1, 2, 5]。C 裡的第一組數字 1，第一次出現在 A 的位置為1；C 裡的第二組數字 2，第一次出現在 A 的位置為 3；依此類推，可得 ia = [1, 3, 2]。此時 A 的第一個數字被分到 C 的第 1 組，A 的第二個數字被分到 C 的第 3 組；依此類推，可得 ic = [1, 3, 2, 2, 3, 1]。</li>
 </ul>
 
 <hr>
 
-<p><a name="Python"></a> </p>
-
-<h2 id="toc_1">Python</h2>
+<h4 id="toc_2"><code>A = accumarray(subs,val)</code></h4>
 
 <ul>
-<li>pandas
+<li>功能：subs 用來指定 val 裡每個元素如何分組，並且將同一組的元素加總。</li>
+<li>例：給定 val = [1, 2, 3]&#39;，subs = [3, 2, 2]&#39;。則根據 subs，val 裡的第 1 個元素被分到第 3 組，第 2, 3 個元素被分到第 2 組。接著將每一組元素加總，若該組沒有任何元素，則得到 0。加總後的結果為 A，故 A = [0, 5, 1]。</li>
+</ul>
+
+<hr>
+
+<h4 id="toc_3"><code>y = nansum(X)</code></h4>
 
 <ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 十分鐘入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/stata_to_pandas.html">stata to pandas</a></li>
+<li>功能：將 X 中的 NaN 移除後加總。</li>
+</ul>
+
+<hr>
+
+<h4 id="toc_4"><code>[x,fval,exitflag,output,grad,hessian] = fminunc(fun, x0, options)</code></h4>
+
+<ul>
+<li>功能：求解 \(\min_x f(x)\)</li>
+<li>input:
+
+<ul>
+<li><code>fun</code>: \(f(x)\)</li>
+<li><code>x0</code>: \(x\) 的起始值</li>
 </ul></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-<li><a href="Python/regexp.html">正規表達式</a></li>
-</ul>
-
-<p><a name = "stata"></a></p>
-
-<h2 id="toc_2">Stata</h2>
+<li>output:
 
 <ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
+<li><code>x</code>: 回傳解，即 \(x^*\)</li>
+<li><code>fval</code>: 回傳 \(f(x^*)\) 的值</li>
+<li><code>exitflag</code>, <code>output</code>: 回傳停止條件以及求解過程</li>
+<li><code>grad</code>: 回傳 \(f(x^*)\) 的 gradient</li>
+<li><code>hessian</code>: 回傳 \(f(x^*)\) 的 Hessian matrix</li>
+</ul></li>
 </ul>
 
-<p><a name = "Econometrics"></a></p>
-
-<h2 id="toc_3">Econometrics</h2>
-
-<ul>
-<li><a href="Econometrics/basic_econometrics.html">基本</a></li>
-<li><a href="Econometrics/MLE.html">MLE</a></li>
-<li><a href="Econometrics/DiscreteChoiceModel.html">Discrete Choice Model</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
-
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name="NumericalMethod"></a> </p>
-
-<h2 id="toc_5">Numerical Method</h2>
-
-<ul>
-<li><a href="NumericalMethod.html">Numerical Method</a></li>
-</ul>
-
-<p><a name="Fortran"></a> </p>
-
-<h2 id="toc_6">Fortran</h2>
-
-<ul>
-<li><a href="Fortran.html">Fortran</a></li>
-</ul>
-
-<p><a name="Matlab"></a> </p>
-
-<h2 id="toc_7">Matlab</h2>
-
-<ul>
-<li><a href="Matlab.html">Matlab</a></li>
-</ul>
-
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_8">QGIS</h2>
-
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_9">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
-</ul>
+<hr>
 
 
 

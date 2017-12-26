@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>MLE</title>
 
 
 <style type="text/css">
@@ -328,113 +328,45 @@ kbd {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h2 id="toc_0">MLE</h2>
 
-<ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">Stata</a></li>
-<li><a href="#Econometrics">Econometrics</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#NumericalMethod">Numerical Method</a></li>
-<li><a href="#Fortran">Fortran</a></li>
-<li><a href="#Matlab">Matlab</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
-</ul>
+<h3 id="toc_1">likelihood function</h3>
 
-<hr>
+<p>給定參數 \(\theta\)，令隨機變數 \(y\) 的 PDF 函數為 \(f(y|\theta)\)。\(f(y|\theta)\) 可以用來描述資料是如何產生的。若有 \(n\) 個 i.i.d. 的樣本來自同一個 PDF 函數，則其聯合機率密度函數為
+\[f(y_1...y_n|\theta) = \prod_{i=1}^n f(y_i|\theta)\]</p>
 
-<p><a name="Python"></a> </p>
+<p>給定 \(\theta\)，此機率密度函數用來描述出現 \(\{y_i \}\) 樣本的機率。我們也可以反過來詮釋，給定我們觀察到的樣本為 \(\{y_i \}\)，則給予不同的 \(\theta\) 值，可以求得不同的 \(f(y_1...y_n|\theta)\) 值，因此我們可以問，哪一個 \(\theta\) 值，能讓 \(f(\cdot|\theta)\) 值最大，意即讓樣本出現 \(\{ y_i\}\) 的機率最大，此即最大概似的概念。根據此概念，我們可以定義概似函數 (likelihood function) 為
+\[L(\theta|y_1...y_n) = \prod_{i=1}^n f(y_i|\theta) = f(y_1,..., y_n|\theta)\]</p>
 
-<h2 id="toc_1">Python</h2>
+<p>\(L(\theta|y_1...y_n)\) 跟 \(f(y_1...y_n|\theta)\) 其實是一模一樣的函數形式，差別只是在詮釋上的不同。對此概似函數取 \(\ln\)，即得到 log-likelihood function:
+\[\ln L(\theta|y_1...y_n) = \sum_{i=1}^n \ln f(y_i|\theta)\]</p>
 
-<ul>
-<li>pandas
+<p>我們可以將 log-likelihood function 一般化，寫成 \(\ln L(\theta| Data)\)，並求解
+\[\max_{\theta} \ln L(\theta|Data)\]
+則其解 \(\widehat\theta\) 即為最大概似估計式(MLE)。</p>
 
-<ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 十分鐘入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/stata_to_pandas.html">stata to pandas</a></li>
-</ul></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-<li><a href="Python/regexp.html">正規表達式</a></li>
-</ul>
+<h3 id="toc_2">MLE 的性質</h3>
 
-<p><a name = "stata"></a></p>
+<p>根據 Greene 計量課本第 5 版第 17 章，若 \(f(y_i|\theta)\) 滿足定義 17.3，則 MLE 具有定理 17.1 的性質。定義 17.3 大致上要求 \(\ln f(y_i|\theta)\) 的一階導數、二階導數、三階導數必須有期望值，且為連續函數。令 \(\theta_o\) 表示真正的參數值，\(E_o[.]\) 表示給定真正參數值時的期望值，則定理 17.1 包括以下幾點</p>
 
-<h2 id="toc_2">Stata</h2>
+<ol>
+<li>MLE 具有一致性(consistency): 對任意小的正實數 \(\epsilon\)，\[\lim_{n\rightarrow\infty}P(|\widehat\theta_n - \theta_o|\leq \epsilon) = 1,\]</li>
+<li>MLE 具有漸進常態性(asymptotic normality): \(\widehat\theta \sim N[\theta_o, I(\theta_o)^{-1}]\)，其中
+\[I(\theta_o) = -E_o\left[\frac{\partial^2 \ln L(\theta_o) }{\partial\theta_o\partial\theta_o&#39;}\right]\]
+稱為 information matrix，為 log-likelihood function 的 Hessian matrix 取期望值加負號。</li>
+</ol>
 
-<ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
+<h3 id="toc_3">如何估計 covariance matrix</h3>
 
-<p><a name = "Econometrics"></a></p>
+<p>方法一: 若 log-likelihood function 的二階導數的函數形式已知，則可以直接將 \(\widehat\theta\) 代入公式，取期望值。意即直接算出
+\[I_1(\theta_o) = -E_o\left[\frac{\partial^2 \ln L(\widehat\theta) }{\partial\widehat\theta\partial\widehat\theta_o&#39;}\right]\]</p>
 
-<h2 id="toc_3">Econometrics</h2>
+<p>方法二: 另一種估計方法是將 \(\widehat\theta\) 代入 log-likelihood function，算出實際的二階導數，意即計算
+\[I_2(\widehat{\theta}) = -\left( \frac{\partial^2 \ln L(\widehat\theta) }{\partial\widehat\theta\partial\widehat\theta_o&#39;} \right)\]</p>
 
-<ul>
-<li><a href="Econometrics/basic_econometrics.html">基本</a></li>
-<li><a href="Econometrics/MLE.html">MLE</a></li>
-<li><a href="Econometrics/DiscreteChoiceModel.html">Discrete Choice Model</a></li>
-</ul>
-
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
-
-<ul>
-<li><a href="oTree/oTree_basic.html">基本操作</a></li>
-<li><a href="oTree/myapp_models.html">myapp models</a></li>
-<li><a href="oTree/myapp_views.html">myapp views</a></li>
-<li><a href="oTree/otree_models.html">detail of models.py</a></li>
-<li><a href="oTree/otree_view.html">detail of view.py</a></li>
-<li><a href="oTree/otree_tests.html">detail of tests.py</a></li>
-</ul>
-
-<p><a name="NumericalMethod"></a> </p>
-
-<h2 id="toc_5">Numerical Method</h2>
-
-<ul>
-<li><a href="NumericalMethod.html">Numerical Method</a></li>
-</ul>
-
-<p><a name="Fortran"></a> </p>
-
-<h2 id="toc_6">Fortran</h2>
-
-<ul>
-<li><a href="Fortran.html">Fortran</a></li>
-</ul>
-
-<p><a name="Matlab"></a> </p>
-
-<h2 id="toc_7">Matlab</h2>
-
-<ul>
-<li><a href="Matlab.html">Matlab</a></li>
-</ul>
-
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_8">QGIS</h2>
-
-<ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
-</ul>
-
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_9">MySQL on Mac</h2>
-
-<ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
-</ul>
+<p>方法三: 第三種估計方法是計算一階導數的 covariance matrix，意即計算
+\[I_3(\widehat{\theta}) = \sum_{i=1}^n \widehat{\bf{g}}_i \widehat{\bf{g}}&#39;_i\]
+\[\widehat{\bf{g}}_i = \frac{\partial\ln f(x_i, \widehat\theta)}{\partial\widehat\theta}\]</p>
 
 
 
