@@ -404,6 +404,8 @@ kbd {
 根據 \(P&#39;_m\) 的定義，可以找到一組 \(i,j\) 使得 \(P&#39;_m = P_{ij}\)，故可得
 \[\sum_m c_m \ln P&#39;_m = \sum_m c_m \left(V_{ij}-\ln \left( \sum_{k=1}^J e^{V_{ik}} \right) \right)\]</p>
 
+<p>雖然 \(\sum_{i}\sum_j y_{ij}\ln P_{ij}\) 與 \(\sum_m c_m \ln P&#39;_m\) 兩種 log-likelihood function 在數學上並沒有差異，但在數值分析時，後者形式比較簡單，可以加快運算速度。</p>
+
 <h2 id="toc_6">Nested logit model</h2>
 
 <p>若我們認為某些商品在消費者心中較為相似，則不能再假設 \(\epsilon_{i1}...\epsilon_{iJ}\) 為 i.i.d.。nlogit 模型將類似的商品分門別類，在同一類商品裡，IIA 成立，任意兩個同類商品的相對市佔率與其他同類商品無關；而兩個不同類的商品，IIA 不成立，它們的相對市佔率與商品的特性有關。</p>

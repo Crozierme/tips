@@ -331,7 +331,7 @@ kbd {
 <h3 id="toc_0">隨機樣本與估計式</h3>
 
 <ul>
-<li><p>本節內容參考管老師統計學第七章</p></li>
+<li><p>參考資料：管中閔統計學第 7 章</p></li>
 <li><p>隨機樣本：根據某一隨機機制(分配)選出的樣本，樣本中任一觀察值都不會影響其他觀察值發生的機率。與隨機樣本相對應的隨機變數，不僅互相獨立且有相同分配。</p></li>
 <li><p>統計量：給定一組隨機變數 \(\{X_1, ..., X_n\}\)，這些隨機變數所構成的函數稱為統計量。</p></li>
 <li><p>點估計：給定一組隨機變數 \(\{X_1, ..., X_n\}\) 及其實現值 \(\{a_1, ..., a_n\}\)，對某一未知參數 \(\theta_o\) 的點估計式 \(h(X_1, ..., X_n)\) 為一統計量，且為隨機變數，而點估計值 \(h(a_1, ..., a_n)\) 則為其特定的實現值。</p></li>
@@ -343,7 +343,41 @@ kbd {
 <li><p>綜合言之，不偏性表示估計式的期望值為真正參數；有效性表示平均而言，估計值與真正參數的距離越近越好；一致性表示樣本越大，估計值越接近真正參數。</p></li>
 </ul>
 
-<h3 id="toc_1">卡方檢定</h3>
+<h3 id="toc_1">期望值與變異數</h3>
+
+<ul>
+<li>參考資料：
+
+<ul>
+<li><a href="https://stats.stackexchange.com/questions/41896/varx-is-known-how-to-calculate-var1-x">https://stats.stackexchange.com/questions/41896/varx-is-known-how-to-calculate-var1-x</a></li>
+<li>Greene 計量課本第 5 版 p.849。</li>
+</ul></li>
+</ul>
+
+<p>令隨機變數 \(x\) 的期望值為 \(\mu\)，變異數為 \(\sigma^2\)。若 \(y = ax + b\)，則 
+\[E[y] = a\mu + b\]
+\[Var[y] = a^2 \sigma^2\]</p>
+
+<p>若考慮更一般的變數變換: \(y = g(x)\)，則可以用泰勒展開式求 \(E[y]\) 與 \(Var[y]\) 的近似值。將 \(g(x)\) 在 \(x= \mu\) 做泰勒展開，可得
+\[y = g(x) = g(\mu) + (x-\mu)g&#39;(\mu) + \frac{(x-\mu)^2}{2}g&#39;&#39;(\mu) +...\]
+則
+\[
+\begin{align}
+E(y) &amp;= E\left[g(\mu) + (x-\mu)g&#39;(\mu) + \frac{(x-\mu)^2}{2}g&#39;&#39;(\mu) +... \right]\\
+  &amp;\approx E[g(\mu)]
+\end{align}
+\]</p>
+
+<p>\[
+\begin{align}
+Var(y) &amp;= Var\left[g(\mu) + (x-\mu)g&#39;(\mu) + \frac{(x-\mu)^2}{2}g&#39;&#39;(\mu) +... \right]\\
+  &amp;=Var\left[(x-\mu)g&#39;(\mu) + \frac{(x-\mu)^2}{2}g&#39;&#39;(\mu) +...  \right] \\
+  &amp; \approx [g&#39;(\mu)]^2 Var[x-\mu]\\
+  &amp;= [g&#39;(\mu)]^2 Var[x]
+\end{align}
+\]</p>
+
+<h3 id="toc_2">卡方檢定</h3>
 
 <ul>
 <li>以下各種檢定皆使用卡方分配：
