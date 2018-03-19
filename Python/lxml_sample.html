@@ -11858,319 +11858,6 @@ dl -- dt -- a
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dl&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有標籤為 &lt;dl&gt; 的元素 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element dl at 0x1083c2bc8&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt; 的元素 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[5]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element div at 0x108a425c8&gt;, &lt;Element div at 0x108a42748&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div/@class&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt; 的元素, 列出它們的 class 的值 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[6]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;desc&#39;, &#39;rating&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class = &quot;desc&quot;]&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt;, 且 class = &quot;desc&quot; 的元素 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[7]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element div at 0x108a425c8&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class = &quot;desc&quot;]/text()&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt;, 且 class = &quot;desc&quot; 的元素, 列出它的文字</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[8]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;\n        中国大陆 / 剧情 / 爱情 / 同性 / 1993 / 陈凯歌 / 张国荣 / 张丰毅 / 巩俐\n      &#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有標籤為 &lt;a&gt; 的元素 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[9]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element a at 0x1083d7408&gt;, &lt;Element a at 0x108a595c8&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd/a&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有在 &lt;dd&gt; 底下的標籤 &lt;a&gt; 的元素 </span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&lt;Element a at 0x108a595c8&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd/a/@href&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有在 &lt;dd&gt; 底下, 標籤 &lt;a&gt; 的元素, 列出它們 href 的值</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;https://movie.douban.com/subject/1291546/?from=tag_all&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd/a/text()&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有在 &lt;dd&gt; 底下, 標籤 &lt;a&gt; 的元素, 列出它們的文字</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[&#39;霸王别姬&#39;]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">subh</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd&#39;</span><span class="p">)</span>   <span class="c1"># 令 subh 為 &lt;dd&gt; 標籤底下的所有東西</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">))</span>  <span class="c1"># 若下令 &#39;//a&#39;, 則會找出所有標籤為 &lt;a&gt; 的元素，</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/a&#39;</span><span class="p">))</span>   <span class="c1"># 錯誤指令</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./a&#39;</span><span class="p">))</span>  <span class="c1"># 若只想找 &lt;dd&gt; 標籤底下的 &lt;a&gt;, 要下令 &#39;./a&#39;, . 表示現在的節點位置</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[&lt;Element a at 0x1083d7408&gt;, &lt;Element a at 0x108a595c8&gt;]
-[]
-[&lt;Element a at 0x108a595c8&gt;]
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">h</span><span class="o">.</span><span class="n">iter</span><span class="p">():</span>  <span class="c1"># 列出所有標籤跟標籤內的文字</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">element</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span> <span class="n">element</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
 </pre></div>
@@ -12216,7 +11903,7 @@ span - 9.5
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 列印網頁原始碼</span>
@@ -12258,6 +11945,435 @@ span - 9.5
     &lt;/dd&gt;
   &lt;/dl&gt;
 &lt;/body&gt;&lt;/html&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dl&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有標籤為 &lt;dl&gt; 的元素 </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Element dl at 0x10df3c888&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt; 的元素 </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Element div at 0x10e5c2b48&gt;, &lt;Element div at 0x10e5c2d08&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div/@class&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt; 的元素, 列出它們的 class 的值 </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;desc&#39;, &#39;rating&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class = &quot;desc&quot;]&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt;, 且 class = &quot;desc&quot; 的元素 </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[9]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Element div at 0x10e5c2b48&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//div[@class = &quot;desc&quot;]/text()&#39;</span><span class="p">)</span> <span class="c1"># 找出所有標籤為 &lt;div&gt;, 且 class = &quot;desc&quot; 的元素, 列出它的文字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;\n        中国大陆 / 剧情 / 爱情 / 同性 / 1993 / 陈凯歌 / 张国荣 / 张丰毅 / 巩俐\n      &#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有標籤為 &lt;a&gt; 的元素 </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Element a at 0x10e5c2bc8&gt;, &lt;Element a at 0x10e5dc708&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd/a&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有在 &lt;dd&gt; 底下的標籤 &lt;a&gt; 的元素 </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;Element a at 0x10e5dc708&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd/a/@href&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有在 &lt;dd&gt; 底下, 標籤 &lt;a&gt; 的元素, 列出它們 href 的值</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[13]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;https://movie.douban.com/subject/1291546/?from=tag_all&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd/a/text()&#39;</span><span class="p">)</span>  <span class="c1"># 找出所有在 &lt;dd&gt; 底下, 標籤 &lt;a&gt; 的元素, 列出它們的文字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;霸王别姬&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">subh</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//dd&#39;</span><span class="p">)</span>   <span class="c1"># 令 subh 為 &lt;dd&gt; 標籤底下的所有東西</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subh</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">))</span>  <span class="c1"># 若下令 &#39;//a&#39;, 則會找出所有標籤為 &lt;a&gt; 的元素，</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;/a&#39;</span><span class="p">))</span>   <span class="c1"># 錯誤指令</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./a&#39;</span><span class="p">))</span>  <span class="c1"># 若只想找 &lt;dd&gt; 標籤底下的 &lt;a&gt;, 要下令 &#39;./a&#39;, . 表示現在的節點位置</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&lt;Element a at 0x10e5c2bc8&gt;, &lt;Element a at 0x10e5dc708&gt;]
+[]
+[&lt;Element a at 0x10e5dc708&gt;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//a&#39;</span><span class="p">))</span>  <span class="c1"># 結果與 print(subh[0].xpath(&#39;//a&#39;)) 相同</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&lt;Element a at 0x10e5c2bc8&gt;, &lt;Element a at 0x10e5dc708&gt;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;./text()&#39;</span><span class="p">))</span>  <span class="c1"># 找出 &lt;dd&gt; 標籤底下文字，無視 &lt;dd&gt; 裡層標籤的文字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;\n      &#39;, &#39;\n        \n      \n      &#39;, &#39;\n    \n        &#39;, &#39;\n    &#39;]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">subh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;.//text()&#39;</span><span class="p">))</span>  <span class="c1"># 找出 &lt;dd&gt; 標籤及其裡層標籤底下文字</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;\n      &#39;, &#39;霸王别姬&#39;, &#39;\n        \n      \n      &#39;, &#39;\n        中国大陆 / 剧情 / 爱情 / 同性 / 1993 / 陈凯歌 / 张国荣 / 张丰毅 / 巩俐\n      &#39;, &#39;\n    \n        &#39;, &#39;\n          &#39;, &#39;\n          &#39;, &#39;9.5&#39;, &#39;\n        &#39;, &#39;\n    &#39;]
 </pre>
 </div>
 </div>
