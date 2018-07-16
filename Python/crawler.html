@@ -345,6 +345,7 @@ kbd {
 <li>網路爬蟲分成兩個部分: 擷取網頁內容，分析網頁內容。</li>
 <li>網頁又可以分為靜態網頁與動態網頁。靜態網頁指純文字與圖片的網頁，沒有任何程式功能，不會讀取資料庫的資料。動態網頁是會與使用者互動的網頁，使用者與網頁互動後，網頁會透過程式與資料庫結合，決定所要呈現的內容。</li>
 <li>簡單來說，靜態網頁的內容是固定的，不同使用者在相同的網址看到的內容都一樣。但是動態網頁的內容是動態的，相同的網址呈現的內容不一定相同。</li>
+<li>動態網頁中有一類為 ASPX 網頁，它可以讓使用者在網頁上填資料，發送表單並查詢。這些表單資訊會存成 ViewState 以及 EventValidation 兩個變數，爬蟲時需要加上這兩個變數的值，才能模擬發送表單的動作。</li>
 </ul>
 
 <h3 id="toc_3">擷取靜態網頁</h3>
@@ -378,7 +379,27 @@ source_text = driver.page_source # 取得網頁原始碼
 print(source_text)
 driver.quit()</code></pre></div>
 
-<h3 id="toc_5">分析網頁 (parsing)</h3>
+<h3 id="toc_5">發送 ASPX 表單</h3>
+
+<ul>
+<li>先在瀏覽器上發送表單，並取得 cookie 內容，包括 ASP.NET_SessionId、__VIEWSTATE、__EVENTVALIDATION，再將這些參數值放入程式裡開始爬蟲。</li>
+<li>基本流程</li>
+</ul>
+
+<div><pre><code class="language-none">import requests
+
+url = &quot;https://www1.nhi.gov.tw/mqinfo/SearchPro.aspx?Type=AMI&amp;List=4&quot;
+params = {   
+    &quot;__EVENTVALIDATION&quot;:&quot;/wEPDwUKMTA5ODI3&quot;,
+    &quot;__VIEWSTATE&quot;:&quot;&quot;/wEdAJYB3w0oMFwGoAK&quot;,
+    }
+mycookies = {&quot;ASP.NET_SessionId&quot;: ydbyi00mgkixuuia1wu5rzmr}
+
+response = requests.post(url, data = params, cookies = mycookies) #發送表單
+source_text = response.text # 取得網頁原始碼
+print(source_text)</code></pre></div>
+
+<h3 id="toc_6">分析網頁 (parsing)</h3>
 
 <ul>
 <li>可使用 <a href="lxml_sample.html">lxml</a> </li>
@@ -391,7 +412,7 @@ html = etree.HTML(source_text) # 將之前擷取的網頁原始碼轉成 etree �
 
 <p><a name = 'getimage'></a></p>
 
-<h2 id="toc_6">抓取圖片</h2>
+<h2 id="toc_7">抓取圖片</h2>
 
 <ul>
 <li>基本流程</li>
