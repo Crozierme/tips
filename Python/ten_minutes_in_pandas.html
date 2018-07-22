@@ -13036,7 +13036,7 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 設定多個選取條件</span>
@@ -13044,690 +13044,6 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
 <span class="c1">### 注意， AND, OR, NOT 必須寫成 &amp;, |, ! </span>
 
 <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span><span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">!=</span> <span class="mi">2008</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[45]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>5</th>
-      <td>sun</td>
-      <td>apple</td>
-      <td>13</td>
-      <td>2009</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span><span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;</span> <span class="mi">2008</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[46]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>sun</td>
-      <td>mango</td>
-      <td>12</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>sun</td>
-      <td>banana</td>
-      <td>23</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>sat</td>
-      <td>apple</td>
-      <td>11</td>
-      <td>2009</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>sun</td>
-      <td>apple</td>
-      <td>13</td>
-      <td>2009</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>tue</td>
-      <td>berry</td>
-      <td>3</td>
-      <td>2010</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>fri</td>
-      <td>berry</td>
-      <td>7</td>
-      <td>2011</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含指定字元</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[48]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6</th>
-      <td>tue</td>
-      <td>berry</td>
-      <td>3</td>
-      <td>2010</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含 S 或 n</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;s|n&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[49]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>sat</td>
-      <td>mango</td>
-      <td>10</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>sun</td>
-      <td>mango</td>
-      <td>12</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>sat</td>
-      <td>banana</td>
-      <td>22</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>sun</td>
-      <td>banana</td>
-      <td>23</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>sat</td>
-      <td>apple</td>
-      <td>11</td>
-      <td>2009</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>sun</td>
-      <td>apple</td>
-      <td>13</td>
-      <td>2009</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 條件不能有空格</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;s | n&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[50]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含 s 與 n 的用法不能寫成這樣</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;s &amp; n&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[51]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含 s 與 n 的用法不能寫成這樣</span>
-<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;s&amp;n&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[52]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中不包含指定字元</span>
-<span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[53]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>sat</td>
-      <td>mango</td>
-      <td>10</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>sun</td>
-      <td>mango</td>
-      <td>12</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>sat</td>
-      <td>banana</td>
-      <td>22</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>sun</td>
-      <td>banana</td>
-      <td>23</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>sat</td>
-      <td>apple</td>
-      <td>11</td>
-      <td>2009</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>sun</td>
-      <td>apple</td>
-      <td>13</td>
-      <td>2009</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>fri</td>
-      <td>berry</td>
-      <td>7</td>
-      <td>2011</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中不包含 m 或 s</span>
-<span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;s|n&#39;</span><span class="p">)]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[54]:</div>
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>day</th>
-      <th>flavour</th>
-      <th>sales</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>6</th>
-      <td>tue</td>
-      <td>berry</td>
-      <td>3</td>
-      <td>2010</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>fri</td>
-      <td>berry</td>
-      <td>7</td>
-      <td>2011</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df[slice]</span>
-<span class="c1"># 對 row 進行 slice</span>
-
-<span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -13769,18 +13085,11 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
+      <th>5</th>
       <td>sun</td>
-      <td>mango</td>
-      <td>12</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>sat</td>
-      <td>banana</td>
-      <td>22</td>
-      <td>2008</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
     </tr>
   </tbody>
 </table>
@@ -13798,16 +13107,7 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df[condition]</span>
-<span class="c1"># a single condition</span>
-<span class="c1"># 註：condition 回傳的是 list of boolean</span>
-<span class="c1"># 則 df[condition] 會回傳 boolean 值為 True 的資料</span>
-
-<span class="c1"># 在本例中, list of boolean 的前三項為 True</span>
-<span class="c1"># 故 df[condition] 回傳前三筆資料</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span><span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;</span> <span class="mi">2008</span><span class="p">)]</span>
 </pre></div>
 
 </div>
@@ -13819,16 +13119,118 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
 
 
 <div class="output_area">
-<div class="prompt"></div>
+<div class="prompt output_prompt">Out[19]:</div>
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[ True  True  True False False False False False]
-</pre>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
+      <td>11</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>tue</td>
+      <td>berry</td>
+      <td>3</td>
+      <td>2010</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>fri</td>
+      <td>berry</td>
+      <td>7</td>
+      <td>2011</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#29992;-Regular-Express--&#36984;&#21462;&#36039;&#26009;">&#29992; Regular Express  &#36984;&#21462;&#36039;&#26009;<a class="anchor-link" href="#&#29992;-Regular-Express--&#36984;&#21462;&#36039;&#26009;">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含指定 pattern</span>
+<span class="c1">### 搜尋 day 的開頭為 s 的資料</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;^s&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">day</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -13878,6 +13280,27 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
       <td>22</td>
       <td>2008</td>
     </tr>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
+      <td>11</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -13891,17 +13314,13 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df[(condition1) &amp; (condition2)]</span>
-<span class="c1"># multiple conditions</span>
-
-<span class="c1"># 在本例中, list of boolean 的第 3 項為 True</span>
-<span class="c1"># 故 df[condition] 回傳第 3 筆資料</span>
-
-<span class="nb">print</span><span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sales</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">))</span>
-<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sales</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含指定 pattern</span>
+<span class="c1">### 搜尋 flavour 的結尾為 e 的資料</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;e$&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="p">)]</span>
 </pre></div>
 
 </div>
@@ -13913,24 +13332,7 @@ Index([&#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
 
 
 <div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>0    False
-1    False
-2    False
-3     True
-4    False
-5    False
-6    False
-7    False
-dtype: bool
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -13960,71 +13362,22 @@ dtype: bool
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
+      <td>11</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>5</th>
       <td>sun</td>
-      <td>banana</td>
-      <td>23</td>
-      <td>2008</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
     </tr>
   </tbody>
 </table>
 </div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#29992;-label-(df.loc)-&#36984;&#21462;&#36039;&#26009;">&#29992; label (df.loc) &#36984;&#21462;&#36039;&#26009;<a class="anchor-link" href="#&#29992;-label-(df.loc)-&#36984;&#21462;&#36039;&#26009;">&#182;</a></h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label">https://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label</a></p>
-<ul>
-<li>原則上，每筆資料都有 column 跟 row，選取資料時，要指定哪一列那一欄。</li>
-<li>指定時有兩種方式，一種是註明第幾欄第幾列，用位置來指定; 一種是用欄列的 label 來指定。</li>
-<li>用 label 指定: <code>df.loc[index_label, column_label]</code></li>
-<li>如果只放一個 <code>label</code>，會被視為 <code>index_label</code></li>
-<li>承上, 如果要放 <code>column_label</code>，一定也要放 <code>index_label</code></li>
-<li><code>label</code> 可以是 single label, slice of label, list of label, boolean of conditions</li>
-<li><code>label</code> 如果放的是 <code>n:m</code> , 與 Python slice 不同的是，m 的結果也會回傳。</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[label]</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt output_prompt">Out[21]:</div>
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>day           sat
-flavour    banana
-sales          22
-year         2008
-Name: 2, dtype: object</pre>
 </div>
 
 </div>
@@ -14038,11 +13391,10 @@ Name: 2, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 比較 df[n:m] 與 df.loc[n:m] 的不同</span>
-<span class="c1"># df[:2] 的 [:2] 是 position of index</span>
-<span class="c1"># 是列出 index 的前兩個</span>
-
-<span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含指定 pattern</span>
+<span class="c1">### 搜尋 flavour 的結尾為 e 或開頭為 m 的資料</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;^m|e$&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="p">)]</span>
 </pre></div>
 
 </div>
@@ -14097,6 +13449,20 @@ Name: 2, dtype: object</pre>
       <td>12</td>
       <td>2008</td>
     </tr>
+    <tr>
+      <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
+      <td>11</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
+    </tr>
   </tbody>
 </table>
 </div>
@@ -14113,12 +13479,12 @@ Name: 2, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[slice]</span>
-<span class="c1"># df.loc[:2] 的 [:2] 是 label of index</span>
-<span class="c1"># 是列出 index 為 0, 1, 2 的資料</span>
-<span class="c1"># 跟 Python 的 slicing 不同，有包含終點</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含指定 pattern</span>
+<span class="c1">### 搜尋 flavour 中出現 an 兩次以上的資料</span>
+<span class="c1">### 此時我們用 ( ) 包住子模式，因為 ( ) 可以當 capture group 使用，系統會警告你是要比對還是要擷取字串呢？</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;(an)</span><span class="si">{2}</span><span class="s2">&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="p">)]</span>
 </pre></div>
 
 </div>
@@ -14128,6 +13494,16 @@ Name: 2, dtype: object</pre>
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Applications/anaconda/lib/python3.6/site-packages/ipykernel_launcher.py:6: UserWarning: This pattern has match groups. To actually get the groups, use str.extract.
+  
+</pre>
+</div>
+</div>
 
 <div class="output_area">
 <div class="prompt output_prompt">Out[23]:</div>
@@ -14160,24 +13536,17 @@ Name: 2, dtype: object</pre>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>sat</td>
-      <td>mango</td>
-      <td>10</td>
-      <td>2008</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>sun</td>
-      <td>mango</td>
-      <td>12</td>
-      <td>2008</td>
-    </tr>
-    <tr>
       <th>2</th>
       <td>sat</td>
       <td>banana</td>
       <td>22</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
       <td>2008</td>
     </tr>
   </tbody>
@@ -14196,10 +13565,12 @@ Name: 2, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[[label1, label2,...]]</span>
-<span class="c1"># 選取 index 為 [1, 3, 5] 的資料</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 搜尋字串中包含指定 pattern</span>
+<span class="c1">### 搜尋 flavour 中出現 an 兩次以上的資料</span>
+<span class="c1">### 若在 ( ) 加上 ?:，表示僅需要用作 group 的用途，但不需要擷取群組。</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;(?:an)</span><span class="si">{2}</span><span class="s2">&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="p">)]</span>
 </pre></div>
 
 </div>
@@ -14241,10 +13612,10 @@ Name: 2, dtype: object</pre>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>sun</td>
-      <td>mango</td>
-      <td>12</td>
+      <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
+      <td>22</td>
       <td>2008</td>
     </tr>
     <tr>
@@ -14253,13 +13624,6 @@ Name: 2, dtype: object</pre>
       <td>banana</td>
       <td>23</td>
       <td>2008</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>sun</td>
-      <td>apple</td>
-      <td>13</td>
-      <td>2009</td>
     </tr>
   </tbody>
 </table>
@@ -14277,10 +13641,14 @@ Name: 2, dtype: object</pre>
 <div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[index_label, column_label]</span>
-<span class="c1"># 因為放了 column_label，所以也要指定 index_label</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 從字串中擷取指定的 pattern</span>
+<span class="c1">### 搜尋 flavour 有 e 的資料，並且擷取 &quot;e&quot;</span>
+<span class="c1">### 在 pattern 中，用 ( ) 包住的字串就是我們要提取的字串</span>
+<span class="c1">### 若使用 extract，卻忘了在 pattern 加上 ( )，會出現 ValueError: pattern contains no capture groups</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;(e)&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 
 </div>
@@ -14295,17 +13663,100 @@ Name: 2, dtype: object</pre>
 <div class="prompt output_prompt">Out[25]:</div>
 
 
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
 
-<div class="output_text output_subarea output_execute_result">
-<pre>0    2008
-1    2008
-2    2008
-3    2008
-4    2009
-5    2009
-6    2010
-7    2011
-Name: year, dtype: int64</pre>
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sat</td>
+      <td>mango</td>
+      <td>10</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
+      <td>22</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
+      <td>11</td>
+      <td>2009</td>
+      <td>e</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
+      <td>e</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>tue</td>
+      <td>berry</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>e</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>fri</td>
+      <td>berry</td>
+      <td>7</td>
+      <td>2011</td>
+      <td>e</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14319,10 +13770,13 @@ Name: year, dtype: int64</pre>
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[index_label, slice]</span>
-<span class="c1"># column_label 也可放 slice</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">### 從字串中擷取指定的 pattern</span>
+<span class="c1">### 搜尋 flavour 有 e 的資料，並且擷取整段字串</span>
+<span class="c1">### 在 pattern 中，用 ( ) 包住的字串就是我們要提取的字串</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;sales&#39;</span><span class="p">:]</span>
+<span class="n">pat</span> <span class="o">=</span> <span class="s2">&quot;(^.*e.*$)&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;fruit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 
 </div>
@@ -14356,50 +13810,163 @@ Name: year, dtype: int64</pre>
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>day</th>
+      <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
+      <td>sat</td>
+      <td>mango</td>
       <td>10</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
       <td>12</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
       <td>22</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
       <td>23</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
       <td>11</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
       <td>13</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>6</th>
+      <td>tue</td>
+      <td>berry</td>
       <td>3</td>
       <td>2010</td>
+      <td>berry</td>
     </tr>
     <tr>
       <th>7</th>
+      <td>fri</td>
+      <td>berry</td>
       <td>7</td>
       <td>2011</td>
+      <td>berry</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Slice">Slice<a class="anchor-link" href="#Slice">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df[slice]</span>
+<span class="c1"># 對 row 進行 slice</span>
+
+<span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[27]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
+      <td>22</td>
+      <td>2008</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -14414,7 +13981,653 @@ Name: year, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df[condition]</span>
+<span class="c1"># a single condition</span>
+<span class="c1"># 註：condition 回傳的是 list of boolean</span>
+<span class="c1"># 則 df[condition] 會回傳 boolean 值為 True 的資料</span>
+
+<span class="c1"># 在本例中, list of boolean 的前三項為 True</span>
+<span class="c1"># 故 df[condition] 回傳前三筆資料</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[ True  True  True False False False False False]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[28]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sat</td>
+      <td>mango</td>
+      <td>10</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
+      <td>22</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df[(condition1) &amp; (condition2)]</span>
+<span class="c1"># multiple conditions</span>
+
+<span class="c1"># 在本例中, list of boolean 的第 3 項為 True</span>
+<span class="c1"># 故 df[condition] 回傳第 3 筆資料</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sales</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">==</span> <span class="s1">&#39;sun&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sales</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0    False
+1    False
+2    False
+3     True
+4    False
+5    False
+6    False
+7    False
+dtype: bool
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[29]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#29992;-label-(df.loc)-&#36984;&#21462;&#36039;&#26009;">&#29992; label (df.loc) &#36984;&#21462;&#36039;&#26009;<a class="anchor-link" href="#&#29992;-label-(df.loc)-&#36984;&#21462;&#36039;&#26009;">&#182;</a></h3><p><a href="https://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label">https://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-label</a></p>
+<ul>
+<li>原則上，每筆資料都有 column 跟 row，選取資料時，要指定哪一列那一欄。</li>
+<li>指定時有兩種方式，一種是註明第幾欄第幾列，用位置來指定; 一種是用欄列的 label 來指定。</li>
+<li>用 label 指定: <code>df.loc[index_label, column_label]</code></li>
+<li>如果只放一個 <code>label</code>，會被視為 <code>index_label</code></li>
+<li>承上, 如果要放 <code>column_label</code>，一定也要放 <code>index_label</code></li>
+<li><code>label</code> 可以是 single label, slice of label, list of label, boolean of conditions</li>
+<li><code>label</code> 如果放的是 <code>n:m</code> , 與 Python slice 不同的是，m 的結果也會回傳。</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[label]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[30]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>day           sat
+flavour    banana
+sales          22
+year         2008
+fruit         NaN
+Name: 2, dtype: object</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 比較 df[n:m] 與 df.loc[n:m] 的不同</span>
+<span class="c1"># df[:2] 的 [:2] 是 position of index</span>
+<span class="c1"># 是列出 index 的前兩個</span>
+
+<span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[31]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sat</td>
+      <td>mango</td>
+      <td>10</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[slice]</span>
+<span class="c1"># df.loc[:2] 的 [:2] 是 label of index</span>
+<span class="c1"># 是列出 index 為 0, 1, 2 的資料</span>
+<span class="c1"># 跟 Python 的 slicing 不同，有包含終點</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[32]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sat</td>
+      <td>mango</td>
+      <td>10</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
+      <td>22</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[[label1, label2,...]]</span>
+<span class="c1"># 選取 index 為 [1, 3, 5] 的資料</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[33]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
+      <td>apple</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[index_label, column_label]</span>
+<span class="c1"># 因為放了 column_label，所以也要指定 index_label</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;year&#39;</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[34]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0    2008
+1    2008
+2    2008
+3    2008
+4    2009
+5    2009
+6    2010
+7    2011
+Name: year, dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[index_label, slice]</span>
+<span class="c1"># column_label 也可放 slice</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;sales&#39;</span><span class="p">:]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[35]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23</td>
+      <td>2008</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11</td>
+      <td>2009</td>
+      <td>apple</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>13</td>
+      <td>2009</td>
+      <td>apple</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>2010</td>
+      <td>berry</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>2011</td>
+      <td>berry</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[index_label, [column_label1, column_label2, ...]]</span>
@@ -14431,7 +14644,7 @@ Name: year, dtype: int64</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[36]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14511,7 +14724,7 @@ Name: year, dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 選取 index_label 為 [&#39;sun&#39;: &#39;fri&#39;] 的資料</span>
@@ -14556,7 +14769,7 @@ day   berry      7  2011
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[37]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14609,7 +14822,7 @@ day   berry      7  2011
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[condition]</span>
@@ -14637,7 +14850,7 @@ day   berry      7  2011
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[38]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14663,6 +14876,7 @@ day   berry      7  2011
       <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -14672,6 +14886,7 @@ day   berry      7  2011
       <td>banana</td>
       <td>23</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
@@ -14679,6 +14894,7 @@ day   berry      7  2011
       <td>apple</td>
       <td>11</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>5</th>
@@ -14686,6 +14902,7 @@ day   berry      7  2011
       <td>apple</td>
       <td>13</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>6</th>
@@ -14693,6 +14910,7 @@ day   berry      7  2011
       <td>berry</td>
       <td>3</td>
       <td>2010</td>
+      <td>berry</td>
     </tr>
     <tr>
       <th>7</th>
@@ -14700,6 +14918,7 @@ day   berry      7  2011
       <td>berry</td>
       <td>7</td>
       <td>2011</td>
+      <td>berry</td>
     </tr>
   </tbody>
 </table>
@@ -14714,7 +14933,7 @@ day   berry      7  2011
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[condition]</span>
@@ -14742,7 +14961,7 @@ day   berry      7  2011
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[30]:</div>
+<div class="prompt output_prompt">Out[39]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14801,7 +15020,7 @@ day   berry      7  2011
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[(condition1) | (condition2)]</span>
@@ -14836,7 +15055,7 @@ Name: day, dtype: bool
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[31]:</div>
+<div class="prompt output_prompt">Out[40]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -14862,6 +15081,7 @@ Name: day, dtype: bool
       <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -14871,6 +15091,7 @@ Name: day, dtype: bool
       <td>mango</td>
       <td>12</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -14878,6 +15099,7 @@ Name: day, dtype: bool
       <td>banana</td>
       <td>23</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>5</th>
@@ -14885,6 +15107,7 @@ Name: day, dtype: bool
       <td>apple</td>
       <td>13</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>6</th>
@@ -14892,6 +15115,7 @@ Name: day, dtype: bool
       <td>berry</td>
       <td>3</td>
       <td>2010</td>
+      <td>berry</td>
     </tr>
     <tr>
       <th>7</th>
@@ -14899,6 +15123,7 @@ Name: day, dtype: bool
       <td>berry</td>
       <td>7</td>
       <td>2011</td>
+      <td>berry</td>
     </tr>
   </tbody>
 </table>
@@ -14913,7 +15138,7 @@ Name: day, dtype: bool
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.loc[index_label, condition]</span>
@@ -14942,14 +15167,14 @@ Name: day, dtype: bool
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
+<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;, &#39;fruit&#39;], dtype=&#39;object&#39;)
 [False False  True False False False False False]
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[32]:</div>
+<div class="prompt output_prompt">Out[41]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15038,7 +15263,7 @@ Name: day, dtype: bool
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[int]</span>
@@ -15055,7 +15280,7 @@ Name: day, dtype: bool
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[33]:</div>
+<div class="prompt output_prompt">Out[42]:</div>
 
 
 
@@ -15064,6 +15289,7 @@ Name: day, dtype: bool
 flavour    banana
 sales          22
 year         2008
+fruit         NaN
 Name: 2, dtype: object</pre>
 </div>
 
@@ -15075,7 +15301,7 @@ Name: 2, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[slice]</span>
@@ -15094,7 +15320,7 @@ Name: 2, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[34]:</div>
+<div class="prompt output_prompt">Out[43]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15120,6 +15346,7 @@ Name: 2, dtype: object</pre>
       <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -15129,6 +15356,7 @@ Name: 2, dtype: object</pre>
       <td>mango</td>
       <td>10</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
@@ -15136,6 +15364,7 @@ Name: 2, dtype: object</pre>
       <td>mango</td>
       <td>12</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -15150,7 +15379,7 @@ Name: 2, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[[int1, int2, ...]]</span>
@@ -15168,7 +15397,7 @@ Name: 2, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[44]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15194,6 +15423,7 @@ Name: 2, dtype: object</pre>
       <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -15203,6 +15433,7 @@ Name: 2, dtype: object</pre>
       <td>mango</td>
       <td>12</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -15210,6 +15441,7 @@ Name: 2, dtype: object</pre>
       <td>banana</td>
       <td>23</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>5</th>
@@ -15217,6 +15449,7 @@ Name: 2, dtype: object</pre>
       <td>apple</td>
       <td>13</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
   </tbody>
 </table>
@@ -15231,7 +15464,7 @@ Name: 2, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[index_position, int]</span>
@@ -15253,13 +15486,13 @@ Name: 2, dtype: object</pre>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
+<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;, &#39;fruit&#39;], dtype=&#39;object&#39;)
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[36]:</div>
+<div class="prompt output_prompt">Out[45]:</div>
 
 
 
@@ -15283,7 +15516,7 @@ Name: day, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[index_position, slice]</span>
@@ -15305,13 +15538,13 @@ Name: day, dtype: object</pre>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
+<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;, &#39;fruit&#39;], dtype=&#39;object&#39;)
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[37]:</div>
+<div class="prompt output_prompt">Out[46]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15391,7 +15624,7 @@ Name: day, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[index_position, [int1, int2, int3]]</span>
@@ -15413,13 +15646,13 @@ Name: day, dtype: object</pre>
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
+<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;, &#39;fruit&#39;], dtype=&#39;object&#39;)
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[38]:</div>
+<div class="prompt output_prompt">Out[47]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15499,7 +15732,7 @@ Name: day, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[condition]</span>
@@ -15517,7 +15750,7 @@ Name: day, dtype: object</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[39]:</div>
+<div class="prompt output_prompt">Out[48]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15543,6 +15776,7 @@ Name: day, dtype: object</pre>
       <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -15552,6 +15786,7 @@ Name: day, dtype: object</pre>
       <td>banana</td>
       <td>23</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
@@ -15559,6 +15794,7 @@ Name: day, dtype: object</pre>
       <td>apple</td>
       <td>11</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>5</th>
@@ -15566,6 +15802,7 @@ Name: day, dtype: object</pre>
       <td>apple</td>
       <td>13</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>6</th>
@@ -15573,6 +15810,7 @@ Name: day, dtype: object</pre>
       <td>berry</td>
       <td>3</td>
       <td>2010</td>
+      <td>berry</td>
     </tr>
     <tr>
       <th>7</th>
@@ -15580,6 +15818,7 @@ Name: day, dtype: object</pre>
       <td>berry</td>
       <td>7</td>
       <td>2011</td>
+      <td>berry</td>
     </tr>
   </tbody>
 </table>
@@ -15594,7 +15833,7 @@ Name: day, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df1.iloc[condition]</span>
@@ -15622,7 +15861,7 @@ Name: day, dtype: object</pre>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[40]:</div>
+<div class="prompt output_prompt">Out[49]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15681,7 +15920,7 @@ Name: day, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[list((condition1) | (condition2))]</span>
@@ -15717,7 +15956,7 @@ Name: day, dtype: bool
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[41]:</div>
+<div class="prompt output_prompt">Out[50]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15743,6 +15982,7 @@ Name: day, dtype: bool
       <th>flavour</th>
       <th>sales</th>
       <th>year</th>
+      <th>fruit</th>
     </tr>
   </thead>
   <tbody>
@@ -15752,6 +15992,7 @@ Name: day, dtype: bool
       <td>mango</td>
       <td>12</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
@@ -15759,6 +16000,7 @@ Name: day, dtype: bool
       <td>banana</td>
       <td>23</td>
       <td>2008</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>5</th>
@@ -15766,6 +16008,7 @@ Name: day, dtype: bool
       <td>apple</td>
       <td>13</td>
       <td>2009</td>
+      <td>apple</td>
     </tr>
     <tr>
       <th>6</th>
@@ -15773,6 +16016,7 @@ Name: day, dtype: bool
       <td>berry</td>
       <td>3</td>
       <td>2010</td>
+      <td>berry</td>
     </tr>
     <tr>
       <th>7</th>
@@ -15780,6 +16024,7 @@ Name: day, dtype: bool
       <td>berry</td>
       <td>7</td>
       <td>2011</td>
+      <td>berry</td>
     </tr>
   </tbody>
 </table>
@@ -15794,7 +16039,7 @@ Name: day, dtype: bool
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.iloc[index_position, condition]</span>
@@ -15816,14 +16061,14 @@ Name: day, dtype: bool
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;], dtype=&#39;object&#39;)
+<pre>Index([&#39;day&#39;, &#39;flavour&#39;, &#39;sales&#39;, &#39;year&#39;, &#39;fruit&#39;], dtype=&#39;object&#39;)
 [False False  True False False False False False]
 </pre>
 </div>
 </div>
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[42]:</div>
+<div class="prompt output_prompt">Out[51]:</div>
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
@@ -15897,17 +16142,112 @@ Name: day, dtype: bool
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#36939;&#31639;">&#36939;&#31639;<a class="anchor-link" href="#&#36939;&#31639;">&#182;</a></h3>
+<h3 id="apply(func)">apply(func)<a class="anchor-link" href="#apply(func)">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df.apply 可以使用 function</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span>
+</pre></div>
 
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[52]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sales</th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>22</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23</td>
+      <td>2008</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>11</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>13</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3</td>
+      <td>2010</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>2011</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># apply(func) 表示對指定欄位的每一筆資料套用 function</span>
+<span class="c1"># 範例 1: 計算 sales 與 year 的最大最小值之差</span>
 <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
 </pre></div>
 
@@ -15920,7 +16260,7 @@ Name: day, dtype: bool
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[43]:</div>
+<div class="prompt output_prompt">Out[53]:</div>
 
 
 
@@ -15928,6 +16268,134 @@ Name: day, dtype: bool
 <pre>sales    20
 year      3
 dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 也可以 apply 自定義的 function</span>
+
+<span class="k">def</span> <span class="nf">addX</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="s2">&quot;_x&quot;</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">fruit</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">flavour</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">addX</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[54]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>flavour</th>
+      <th>sales</th>
+      <th>year</th>
+      <th>fruit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sat</td>
+      <td>mango</td>
+      <td>10</td>
+      <td>2008</td>
+      <td>mango_x</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sun</td>
+      <td>mango</td>
+      <td>12</td>
+      <td>2008</td>
+      <td>mango_x</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sat</td>
+      <td>banana</td>
+      <td>22</td>
+      <td>2008</td>
+      <td>banana_x</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sun</td>
+      <td>banana</td>
+      <td>23</td>
+      <td>2008</td>
+      <td>banana_x</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sat</td>
+      <td>apple</td>
+      <td>11</td>
+      <td>2009</td>
+      <td>apple_x</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>sun</td>
+      <td>apple</td>
+      <td>13</td>
+      <td>2009</td>
+      <td>apple_x</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>tue</td>
+      <td>berry</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>berry_x</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>fri</td>
+      <td>berry</td>
+      <td>7</td>
+      <td>2011</td>
+      <td>berry_x</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15947,7 +16415,7 @@ dtype: int64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># series.value_counts() 計算每個值出現幾次</span>
@@ -15964,15 +16432,15 @@ dtype: int64</pre>
 
 
 <div class="output_area">
-<div class="prompt output_prompt">Out[44]:</div>
+<div class="prompt output_prompt">Out[55]:</div>
 
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>sun    3
 sat    3
-tue    1
 fri    1
+tue    1
 Name: day, dtype: int64</pre>
 </div>
 
