@@ -543,7 +543,7 @@ div.prism-show-language > div.prism-show-language-label {
 
 <body>
 
-<h2 id="toc_0">範例0: 建立新的實驗</h2>
+<h2 id="toc_0">範例0：建立新的實驗</h2>
 
 <p>範例 0 示範如何從無到有建立一個新的實驗，並讓受試者在本機端進行實驗。我們將設計一個簡單問卷，讓受試者輸入姓名與年齡後，在網頁上顯示他們輸入的資料。流程如下：</p>
 
@@ -597,6 +597,7 @@ otree startapp my_app</code></pre></div>
 <h4 id="toc_6">3. 修改 model.py</h4>
 
 <ul>
+<li><code>model.py</code>的功能為定義資料表格的欄位與類型。我們可以先思考完成實驗後，資料表格應該長什麼樣，應該有哪些欄位，欄位類型是什麼，再將這些欄位定義在<code>model.py</code></li>
 <li>我們第一個實驗是讓受試者填寫姓名跟年齡，我們的資料應該包括一個受試者表格，且表格裡有姓名與年齡兩個欄位。</li>
 <li><p>我們可以在<code>model.py</code>的<code>class Player(BasePlayer)</code>設定這兩個欄位，其中<code>name</code>為字串格式，<code>age</code>與<code>birthyear</code>為整數格式。</p>
 
@@ -686,9 +687,9 @@ class Player(BasePlayer):
 <h4 id="toc_10">5. 修改 page.py</h4>
 
 <ul>
-<li>因為網頁本身並沒有計算與處理資料的功能，我們需要在<code>page.py</code>裡設定各個網頁怎麼處理資料。舉例來說，我們讓受試者在<code>MyPage.html</code>輸入姓名與年齡，當受試者按下發送後，<code>MyPage.html</code>並不會將剛剛輸入的資訊放到資料庫裡，我們需要在<code>page.py</code>裡，設定如何把資訊放到資料庫裡指定的欄位。</li>
+<li><code>page.py</code>的功能為處理與運算資料，這是因為網頁本身並沒有計算與處理資料的功能，所以需要另外設定各個網頁怎麼處理資料。舉例來說，我們讓受試者在<code>MyPage.html</code>輸入姓名與年齡，當受試者按下發送後，<code>MyPage.html</code>並不會將剛剛輸入的資訊放到資料庫裡，我們需要在<code>page.py</code>裡，設定如何把資訊放到資料庫裡指定的欄位。</li>
 <li>因為我們有兩個頁面，所以在<code>page.py</code>裡需要兩個相對應的 class 來處理這兩個頁面，class 的名稱必須與網頁名稱相同。</li>
-<li><p>我們在<code>class MyPage(Page)</code>裡，設定受試者在<code>MyPage.html</code>輸入的資訊對應到資料庫的哪些欄位。設定的方式如下：</p>
+<li><p><code>MyPage.html</code>包含一個表單讓受試者填資料，在<code>class MyPage(Page)</code>裡，設定表單資訊對應到資料庫的哪些欄位。設定的方式如下：</p>
 
 <div><pre class="line-numbers"><code class="language-python">class MyPage(Page):
     form_model = &#39;player&#39;
