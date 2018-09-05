@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>main</title>
+<title>basic</title>
 
 
 <style type="text/css">
@@ -543,110 +543,93 @@ div.prism-show-language > div.prism-show-language-label {
 
 <body>
 
-<h1 id="toc_0">目錄</h1>
+<h1 id="toc_0">Python</h1>
 
 <ul>
-<li><a href="#Python">Python</a></li>
-<li><a href="#stata">Stata</a></li>
-<li><a href="#Econometrics">Econometrics</a></li>
-<li><a href="#oTree">oTree</a></li>
-<li><a href="#NumericalMethod">Numerical Method</a></li>
-<li><a href="#Fortran">Fortran</a></li>
-<li><a href="#Matlab">Matlab</a></li>
-<li><a href="#QGIS">QGIS</a></li>
-<li><a href="#MySQLonMac">MySQL on Mac</a></li>
+<li><a href="#install">安裝</a></li>
+<li><a href="#venv">建立虛擬環境 (by venv)</a></li>
+<li><a href="#conda">建立虛擬環境 (by conda)</a></li>
 </ul>
 
-<hr>
+<h2 id="toc_1"></h2>
 
-<p><a name="Python"></a> </p>
+<p><a name = "install"></a></p>
 
-<h2 id="toc_1">Python</h2>
-
-<ul>
-<li><a href="Python/basic.html">基本概念</a></li>
-<li>pandas
+<h3 id="toc_2">安裝</h3>
 
 <ul>
-<li><a href="Python/ten_minutes_in_pandas.html">pandas 十分鐘入門</a></li>
-<li><a href="Python/change_values_in_df.html">change values in df</a></li>
-<li><a href="Python/create_series_in_df.html">create series in df</a></li>
-<li><a href="Python/how_to_merge_combine_df.html">how to merge, append in df</a></li>
-<li><a href="Python/stata_to_pandas.html">stata to pandas</a></li>
-</ul></li>
-<li><a href="Python/plot.html">plot</a></li>
-<li><a href="Python/how_class_works.html">物件導向</a></li>
-<li><a href="Python/crawler.html">爬蟲</a></li>
-<li><a href="Python/tkinter_example.html">GUI(tkinter)</a></li>
-<li><a href="Python/regexp.html">正規表達式</a></li>
+<li>mac 內建 python 2.7.10</li>
+<li>安裝 Anaconda：Anaconda 可以視為 Python 懶人包，除了 Python 本體外，還包含了 Python 常用的套件。缺點是包含一堆用不到的套件，佔空間。安裝後，會多了<code>conda</code>指令管理不同版本的 Python 及套件。</li>
 </ul>
 
-<p><a name = "stata"></a></p>
+<h2 id="toc_3"></h2>
 
-<h2 id="toc_2">Stata</h2>
+<p><a name = "venv"></a></p>
 
-<ul>
-<li><a href="stata/stata_commands.html">指令集</a></li>
-<li><a href="stata/stata_graph.html">graph</a></li>
-</ul>
-
-<p><a name = "Econometrics"></a></p>
-
-<h2 id="toc_3">Econometrics</h2>
+<h3 id="toc_4">建立虛擬環境 (by venv)</h3>
 
 <ul>
-<li><a href="Econometrics/basic_econometrics.html">基本</a></li>
-<li><a href="Econometrics/MLE.html">MLE</a></li>
-<li><a href="Econometrics/DiscreteChoiceModel.html">Discrete Choice Model</a></li>
+<li><a href="https://docs.python.org/3.7/library/venv.html">https://docs.python.org/3.7/library/venv.html</a></li>
+<li><p><a href="https://stackoverflow.com/questions/26215790/venv-doesnt-create-activate-script-python3">https://stackoverflow.com/questions/26215790/venv-doesnt-create-activate-script-python3</a></p></li>
+<li><p>建立虛擬環境</p></li>
 </ul>
 
-<p><a name = "oTree"></a></p>
-
-<h2 id="toc_4">oTree</h2>
+<div><pre class="line-numbers"><code class="language-none">python -m venv --without-pip [venv_name]
+</code></pre></div>
 
 <ul>
-<li><a href="oTree/oTree_tutorial.html">教學</a></li>
+<li>取得<code>pip</code> (注意，在虛擬環境中取得的套件，都要重新啟動才會生效，否則還是會使用原本環境的套件。)</li>
 </ul>
 
-<p><a name="NumericalMethod"></a> </p>
-
-<h2 id="toc_5">Numerical Method</h2>
+<div><pre class="line-numbers"><code class="language-none">source  [venv_name]/bin/activate
+curl https://bootstrap.pypa.io/get-pip.py | python
+deactivate
+source [venv_name]/bin/activate</code></pre></div>
 
 <ul>
-<li><a href="NumericalMethod.html">Numerical Method</a></li>
+<li>啟動與關閉虛擬環境</li>
 </ul>
 
-<p><a name="Fortran"></a> </p>
+<div><pre class="line-numbers"><code class="language-none">source [venv_name]/bin/activate
+deactivate</code></pre></div>
 
-<h2 id="toc_6">Fortran</h2>
+<h2 id="toc_5"></h2>
+
+<p><a name = "conda"></a></p>
+
+<h3 id="toc_6">建立虛擬環境 (by conda)</h3>
 
 <ul>
-<li><a href="Fortran.html">Fortran</a></li>
+<li><p><a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">https://conda.io/docs/user-guide/tasks/manage-environments.html</a></p></li>
+<li><p>建立虛擬環境</p></li>
 </ul>
 
-<p><a name="Matlab"></a> </p>
-
-<h2 id="toc_7">Matlab</h2>
+<div><pre class="line-numbers"><code class="language-none">conda create -n [venv_name] [package_list]</code></pre></div>
 
 <ul>
-<li><a href="Matlab.html">Matlab</a></li>
+<li>啟動與關閉虛擬環境</li>
 </ul>
 
-<p><a name = "QGIS"></a></p>
-
-<h2 id="toc_8">QGIS</h2>
+<div><pre class="line-numbers"><code class="language-none">source activate [venv_name]
+source deactivate [venv_name]</code></pre></div>
 
 <ul>
-<li><a href="QGIS/QGIS.html">QGIS</a></li>
+<li>檢視所有 conda 環境</li>
 </ul>
 
-<p><a name = "MySQLonMac"></a></p>
-
-<h2 id="toc_9">MySQL on Mac</h2>
+<div><pre class="line-numbers"><code class="language-none">conda env list</code></pre></div>
 
 <ul>
-<li><a href="http://www.elated.com/articles/mysql-for-absolute-beginners/">MySQL for Absolute Beginners</a></li>
+<li>檢視目前 conda 環境下安裝的 package</li>
 </ul>
+
+<div><pre class="line-numbers"><code class="language-none">conda list</code></pre></div>
+
+<ul>
+<li>刪除虛擬環境</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">conda env remove -n [venv_name]</code></pre></div>
 
 
 
