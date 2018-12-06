@@ -555,8 +555,6 @@ div.prism-show-language > div.prism-show-language-label {
 <li><a href="#template">修改 template</a></li>
 <li><a href="#pagepy">修改 page.py</a></li>
 <li><a href="#settingspy">修改 settings.py</a></li>
-<li><a href="#timeout">倒數計時</a></li>
-<li><a href="#grouping">分組</a></li>
 </ol>
 
 <h2 id="toc_1"></h2>
@@ -613,10 +611,27 @@ div.prism-show-language > div.prism-show-language-label {
 
 <div><pre class="line-numbers"><code class="language-python">class Group(BaseGroup):
     offer_to_responser = models.CurrencyField(min=0, max=Constants.endowment)
-    offer_accept = models.BooleanField()</code></pre></div></li>
+    offer_accept = models.IntegerField(
+        choices=[
+            [0, &#39;拒絕&#39;],
+            [1, &#39;接受&#39;],
+        ]
+    )</code></pre></div>
+
+<p>此處我們設定<code>offer_accept</code>的類型為整數，並讓每個數值都有相對應的文字標籤。如果沒有設定文字標籤，則回應者看到的選單會以數字呈現，因此設定文字標籤可以方便回應者選擇。另外，這個文字標籤只會在選單出現，其他網頁呼叫這個變數時，還是會呈現數字。在 otree 裡，當我們幫某變數<code>foo</code>設定好<code>choices</code>後，otree 會自動新增<code>get_foo_display()</code>函數讓我們取得該變數的文字標籤。因此如果要讓<code>offer_accept</code>以文字標籤方式呈現，可以使用函數<code>get_offer_accept_display()</code>。詳情請見底下<code>page.py</code>的設定。註：</p></li>
 </ul>
 
-<h5 id="toc_8">2.4 完整的<code>model.py</code></h5>
+<h5 id="toc_8">2.4 <code>class Subsession(BaseSubsession)</code></h5>
+
+<ul>
+<li><p>在<code>class Subsession(BaseSubsession)</code>加入隨機分組</p>
+
+<div><pre class="line-numbers"><code class="language-python">    class Subsession(BaseSubsession):
+        def creating_session(self):
+            self.group_randomly()</code></pre></div></li>
+</ul>
+
+<h5 id="toc_9">2.5 完整的<code>model.py</code></h5>
 
 <ul>
 <li><div><pre class="line-numbers"><code class="language-python">from otree.api import (
@@ -634,28 +649,253 @@ class Constants(BaseConstants):
     name_in_url = &#39;my_ultimatum&#39;
     players_per_group = 2
     num_rounds = 3
-
     endowment = c(20)
 
 class Subsession(BaseSubsession):
-    pass
+    def creating_session(self):
+        self.group_randomly()
 
 class Group(BaseGroup):
     offer_to_responser = models.CurrencyField(min=0, max=Constants.endowment)
-    offer_accept = models.BooleanField()    
+    offer_accept = models.IntegerField(
+        choices=[
+            [0, &#39;拒絕&#39;],
+            [1, &#39;接受&#39;],
+        ]
+    )
 
 class Player(BasePlayer):
     pass</code></pre></div></li>
 </ul>
 
-<h2 id="toc_9"></h2>
+<h2 id="toc_10"></h2>
 
 <p><a name = template></a></p>
 
-<h4 id="toc_10">3. 修改 template</h4>
+<h4 id="toc_11">3. 修改 template</h4>
 
 <ul>
-<li>實驗一共有三個頁面，一個是提案者決定分多少錢給回應者<code>Proposer.html</code>，一個是回應者選擇接受或拒絕<code>Responser.html</code>，第三個頁面為結果<code>Result.html</code>。設計好這三個頁面樣式後，將它們放在<code>templates/my_ultimatum/</code>裡。除此之外，我們還希望實驗說明<code>Instructions.html</code>可以出現在每一頁，幫助受試者理解實驗。</li>
+<li><p>實驗一共有三個頁面，一個是提案者決定分多少錢給回應者<code>Proposer.html</code>，一個是回應者選擇接受或拒絕<code>Responser.html</code>，第三個頁面為結果<code>Result.html</code>。除此之外，我們還希望實驗說明<code>Instructions.html</code>可以出現在每一頁，幫助受試者理解實驗。設計好這四個頁面樣式後，將它們放在<code>templates/my_ultimatum/</code>裡。</p></li>
+<li><p>介紹頁面<code>Instructions.html</code>:</p>
+
+<div><pre class="line-numbers"><code class="language-css">{% load otree static %}
+
+&lt;div class=&quot;card bg-light&quot;&gt;
+    &lt;div class=&quot;card-body&quot;&gt;
+
+    &lt;h3&gt;
+        介紹
+    &lt;/h3&gt;
+    &lt;p&gt;
+        本實驗為兩人最後通牒賽局。
+    &lt;/p&gt;
+    &lt;p&gt;
+        一開始，提案者將會收到{{ Constants.endowment }}稟賦。
+    提案者可自由決定從{{ Constants.endowment }}中分配給回應者多少點。
+    如果回應者決定此分配，則按照此提案分配。
+    如果回應者拒絕此分配，則兩人都得到 0 點。
+    &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+
+<p>我們只要在其他頁面樣式加入<code>{% include &#39;my_ultimatum/Instructions.html&#39; %}</code>，就可以將<code>Instructions.html</code>內容加入該頁面。</p></li>
+<li><p>提案頁面<code>Proposer.html</code></p>
+
+<div><pre class="line-numbers"><code class="language-css">{% extends &quot;global/Page.html&quot; %}
+{% load static otree %}
+
+{% block title %}
+    最後通牒：請提案
+{% endblock %}
+
+{% block content %}
+
+    {% include &#39;my_ultimatum/Instructions.html&#39; %}
+
+    &lt;p&gt;
+    你是提案者，你有{{Constants.endowment}}稟賦。
+    &lt;/p&gt;
+
+    {% formfield group.offer_to_responser label=&quot;你要分配多少點給回應者？&quot; %}
+
+    {% next_button %}
+
+{% endblock %}</code></pre></div></li>
+<li><p>回應頁面<code>Responser.html</code></p>
+
+<div><pre class="line-numbers"><code class="language-css">{% extends &quot;global/Page.html&quot; %}
+{% load static otree %}
+
+{% block title %}
+    最後通牒：請回應
+{% endblock %}
+
+{% block content %}
+
+    {% include &#39;my_ultimatumt/Instructions.html&#39; %}
+
+    &lt;p&gt;
+        你是回應者，提案者分配給你{{group.offer_to_responser}}
+    &lt;/p&gt;
+
+    {% formfield group.offer_accept label=&quot;你是否同意此分配？&quot; %}
+
+    {% next_button %}
+
+{% endblock %}</code></pre></div></li>
+<li><p>結果頁面<code>Result.html</code></p>
+
+<div><pre class="line-numbers"><code class="language-css">{% extends &quot;global/Page.html&quot; %}
+{% load static otree %}
+
+{% block title %}
+    結果
+{% endblock %}
+
+{% block content %}
+
+    {% if player.id_in_group == 1 %}
+        &lt;p&gt;
+            你分配給回應者{{ group.offer_to_responser }}，回應者選擇{{ reponser_choice }}。
+        &lt;/p&gt;
+    {% else %}
+        &lt;p&gt;
+            提案者分配給你{{ group.offer_to_responser }}，你選擇{{ reponser_choice }}。
+        &lt;/p&gt;
+
+    {% endif %}
+
+    &lt;p&gt;
+    因此，你的報酬為{{ player.payoff }}.
+    &lt;/p&gt;
+
+    {% next_button %}
+
+    {% include &#39;my_ultimatum/Instructions.html&#39; %}
+
+{% endblock %}</code></pre></div>
+
+<p>注意：我們在結果頁面想要呈現回應者的選擇，但我們不是用<code>group.offer_accept</code>，而是使用<code>responser_choice</code>，後者沒有出現在<code>model.py</code>裡。這裡有兩點需要說明，首先，如果想將原先不存在的變數值傳送到某頁面呈現，需要在<code>page.py</code>裡該頁面的 class 中定義<code>vars_for_template(self)</code>，詳情請見<code>page.py</code>的設定。另外，我們之所以不使用<code>group.offer_accept</code>，是因為<code>group.offer_accept</code>的值為 0 或 1，而我們希望呈現的是拒絕或接受。所以我們需要將<code>group.offer_accept</code>的值轉成文字標籤後再呈現，而<code>responser_choice</code>即轉成文字標籤後的變數。</p></li>
+</ul>
+
+<h2 id="toc_12"></h2>
+
+<p><a name = pagepy></a></p>
+
+<h4 id="toc_13">4. 修改 page.py</h4>
+
+<ul>
+<li><p>我們在template有四個頁面，但是<code>Instructions.html</code>並不是獨立的頁面，因此在<code>page.py</code>裡只需要設定另外三個相對應的 class 來處理這三個頁面。除此之外，實驗需要另外兩個<code>WaitPage</code>，一個是回應者等待提案者提案，一個是回應者做出選擇後，等待程式計算結果。</p></li>
+<li><p><code>Proposer.html</code>包含一個表單讓提案者提案，需要在<code>class Proposer(Page)</code>設定表單所對應的欄位。此外<code>Proposer.html</code>只有提案者會看到，可以使用<code>Page</code>class 內建的函數名稱<code>is_displayed()</code>，我們需要定義該函數內容，otree 會在該函數的<code>return</code>值為 True 時顯示本頁。假設我們讓組內 id 為 1 的受試者為提案者，則我們可以定義<code>is_displayed()</code>的<code>return</code>值為<code>self.player.id_in_group == 1</code>，這樣當受試者的組內 id 為 1 時，<code>return</code>值即為 True。</p>
+
+<div><pre class="line-numbers"><code class="language-python">class Proposer(Page):
+
+    form_model = &#39;group&#39;
+    form_fields = [&#39;offer_to_responser&#39;]
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1</code></pre></div></li>
+<li><p><code>Responser.html</code>包含一個表單讓回應者選擇拒絕或接受，需要在<code>class Responser(Page)</code>設定表單所對應的欄位。同樣地，<code>Responser.html</code>只顯示給回應者看，所以需要用<code>is_displayed()</code>設定顯示條件。</p>
+
+<div><pre class="line-numbers"><code class="language-python">class Responser(Page):
+
+    form_model = &#39;group&#39;
+    form_fields = [&#39;offer_accept&#39;]
+
+    def is_displayed(self):
+        return self.player.id_in_group == 2</code></pre></div></li>
+<li><p>如前所言，我們需要設定兩個<code>WaitPage</code>，其中一個是回應者等待提案者提案，我們將其稱為<code>class WaitForP1(WaitPage)</code>，此時不需要任何計算。另一個是程式等回應者做出選擇後，計算結果並傳送到<code>Results.html</code>呈現，我們將其稱為<code>class ResultsWaitPage(WaitPage)</code>。我們使用<code>WaitPage</code>class 內建的函數名稱<code>after_all_players_arrive()</code>定義回應者做出選擇後的計算，它會在所有人都進入等待頁面後自動執行。</p>
+
+<div><pre class="line-numbers"><code class="language-python">class ResultsWaitPage(WaitPage):
+
+   def after_all_players_arrive(self):
+        group = self.group
+        p1 = group.get_player_by_id(1)
+        p2 = group.get_player_by_id(2)
+        p1.payoff = group.offer_accpet * (Constants.endowment - group.offer_to_responser)
+        p2.payoff = group.offer_accpet * group.offer_to_responser   </code></pre></div></li>
+<li><p>我們在前面的<code>Result.html</code>設定過<code>responser_choice</code>，這個變數不存在<code>model.py</code>裡。如果要傳送不存在的變數值傳送到<code>Result.html</code>呈現，則可以在<code>class Results(Page)</code>使用<code>Page</code>class 內建的函數名稱<code>def vars_for_template()</code>，該函數的<code>return</code>值必須為 <code>{target_variale : target_value}</code> 的 dict，otree 會將<code>return</code>值呈現在該頁面。在本例中，<code>target_variabl</code>即頁面上的<code>responser_choice</code>。而<code>target_value</code>是將<code>group.offer_accept</code>的值從數值轉成我們在<code>model.py</code>設定好的文字標籤，可以用函數<code>get_offer_accept_display()</code>來取得文字標籤：</p>
+
+<div><pre class="line-numbers"><code class="language-python">class Results(Page):
+    def vars_for_template(self):
+        return {
+            &#39;responser_choice&#39;:self.group.get_offer_accept_display()
+        }</code></pre></div></li>
+<li><p>最後，我們設定頁面呈現的順序如下：</p>
+
+<div><pre class="line-numbers"><code class="language-python">    page_sequence = [
+        Proposer,
+        WaitForP1,
+        Responser,
+        ResultsWaitPage,
+        Results,
+    ]</code></pre></div></li>
+<li><p>完整的<code>page.py</code>如下：</p>
+
+<div><pre class="line-numbers"><code class="language-python">from otree.api import Currency as c, currency_range
+from ._builtin import Page, WaitPage
+from .models import Constants
+
+class Proposer(Page):
+
+    form_model = &#39;group&#39;
+    form_fields = [&#39;offer_to_responser&#39;]
+
+    def is_displayed(self):
+        return self.player.id_in_group == 1
+
+class Responser(Page):
+
+    form_model = &#39;group&#39;
+    form_fields = [&#39;offer_accept&#39;]
+
+    def is_displayed(self):
+        return self.player.id_in_group == 2
+
+class WaitForP1(WaitPage):
+    pass
+
+class ResultsWaitPage(WaitPage):
+
+    def after_all_players_arrive(self):
+        group = self.group
+        p1 = group.get_player_by_id(1)
+        p2 = group.get_player_by_id(2)
+        p1.payoff = group.offer_accpet * (Constants.endowment - group.offer_to_responser)
+        p2.payoff = group.offer_accpet * group.offer_to_responser
+
+class Results(Page):
+    def vars_for_template(self):
+        return {
+            &#39;responser_choice&#39;:self.group.get_offer_accept_display()
+        }
+
+page_sequence = [
+    Proposer,
+    WaitForP1,
+    Responser,
+    ResultsWaitPage,
+    Results,
+]</code></pre></div></li>
+</ul>
+
+<h2 id="toc_14"></h2>
+
+<p><a name = settingspy></a></p>
+
+<h4 id="toc_15">5. 修改 settings.py</h4>
+
+<ul>
+<li><p>在<code>my_project</code>裡的<code>settings.py</code>的<code>SESSION_CONFIGS</code>加入我們剛剛寫好的 app，設定如下：</p>
+
+<div><pre class="line-numbers"><code class="language-python">SESSION_CONFIGS = [
+    {
+        &#39;name&#39;: &#39;my_ultimatum&#39;,
+        &#39;display_name&#39;: &#39;最後通牒&#39;
+        &#39;num_demo_participants&#39;: 6,
+        &#39;app_sequence&#39;: [&#39;my_ultimatum&#39;],
+    },
+    ] </code></pre></div></li>
 </ul>
 
 
@@ -666,6 +906,14 @@ var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScop
 
 <script type="text/javascript">
 Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+Prism.languages.css={comment:/\/\*[\w\W]*?\*\//,atrule:{pattern:/@[\w-]+?.*?(;|(?=\s*\{))/i,inside:{rule:/@[\w-]+/}},url:/url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,selector:/[^\{\}\s][^\{\};]*?(?=\s*\{)/,string:/("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,property:/(\b|\B)[\w-]+(?=\s*:)/i,important:/\B!important\b/i,"function":/[-a-z0-9]+(?=\()/i,punctuation:/[(){};:]/},Prism.languages.css.atrule.inside.rest=Prism.util.clone(Prism.languages.css),Prism.languages.markup&&(Prism.languages.insertBefore("markup","tag",{style:{pattern:/(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,lookbehind:!0,inside:Prism.languages.css,alias:"language-css"}}),Prism.languages.insertBefore("inside","attr-value",{"style-attr":{pattern:/\s*style=("|').*?\1/i,inside:{"attr-name":{pattern:/^\s*style/i,inside:Prism.languages.markup.tag.inside},punctuation:/^\s*=\s*['"]|['"]\s*$/,"attr-value":{pattern:/.+/i,inside:Prism.languages.css}},alias:"language-css"}},Prism.languages.markup.tag));
+</script>
+
+<script type="text/javascript">
+Prism.languages.css.selector={pattern:/[^\{\}\s][^\{\}]*(?=\s*\{)/,inside:{"pseudo-element":/:(?:after|before|first-letter|first-line|selection)|::[-\w]+/,"pseudo-class":/:[-\w]+(?:\(.*\))?/,"class":/\.[-:\.\w]+/,id:/#[-:\.\w]+/}},Prism.languages.insertBefore("css","function",{hexcode:/#[\da-f]{3,6}/i,entity:/\\[\da-f]{1,8}/i,number:/[\d%\.]+/});
 </script>
 
 <script type="text/javascript">
