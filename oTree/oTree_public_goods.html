@@ -694,7 +694,7 @@ class Player(BasePlayer):
     {% next_button %}
 
 {% endblock %}</code></pre></div></li>
-<li><p>結果頁面<code>Contribute.html</code>：</p>
+<li><p>結果頁面<code>Results.html</code>：</p>
 
 <div><pre class="line-numbers"><code class="language-css">{% extends &quot;global/Page.html&quot; %}
 {% load static otree %}
@@ -726,7 +726,10 @@ class Player(BasePlayer):
 <div><pre class="line-numbers"><code class="language-python">class Contribute(Page):
     form_model = &#39;player&#39;
     form_fields = [&#39;contribution&#39;]</code></pre></div></li>
-<li><p><code>Result.html</code>並不需要處理資料，所以在<code>class Results(Page)</code>不需要做任何設定。</p></li>
+<li><p><code>Result.html</code>並不需要處理資料，所以在<code>class Results(Page)</code>不需要做任何設定。</p>
+
+<div><pre class="line-numbers"><code class="language-python">class Results(Page):
+    pass</code></pre></div></li>
 <li><p>在實驗進行時，受試者在<code>Contribute.html</code>決定捐獻數字後，不能馬上看到結果，需要等其他人都完成捐獻後，算出公共財效益，然後才進入<code>Results.html</code>將結果呈現給受試者瀏覽。因此我們需要在<code>Contribute.html</code>跟<code>Results.html</code>之間插入一個頁面來處理等待與計算。在 otree 裡<code>class ResultsWaitPage(WaitPage)</code>即負責這個功能。</p></li>
 <li><p><code>WaitPage</code> class 已經內建了一個函數名稱<code>after_all_players_arrive()</code>，當所有人都進到等待頁面後，程式會自動執行函數內容。請注意，otree 只是內建了這個函數名稱，但沒有定義函數內容，需要自己定義。</p>
 

@@ -588,7 +588,6 @@ div.prism-show-language > div.prism-show-language-label {
     name_in_url = &#39;my_ultimatum&#39;
     players_per_group = 2
     num_rounds = 3
-
     endowment = c(20)</code></pre></div></li>
 </ul>
 
@@ -732,7 +731,7 @@ class Player(BasePlayer):
 
 {% block content %}
 
-    {% include &#39;my_ultimatumt/Instructions.html&#39; %}
+    {% include &#39;my_ultimatum/Instructions.html&#39; %}
 
     &lt;p&gt;
         你是回應者，提案者分配給你{{group.offer_to_responser}}
@@ -743,7 +742,7 @@ class Player(BasePlayer):
     {% next_button %}
 
 {% endblock %}</code></pre></div></li>
-<li><p>結果頁面<code>Result.html</code></p>
+<li><p>結果頁面<code>Results.html</code></p>
 
 <div><pre class="line-numbers"><code class="language-css">{% extends &quot;global/Page.html&quot; %}
 {% load static otree %}
@@ -756,11 +755,11 @@ class Player(BasePlayer):
 
     {% if player.id_in_group == 1 %}
         &lt;p&gt;
-            你分配給回應者{{ group.offer_to_responser }}，回應者選擇{{ reponser_choice }}。
+            你分配給回應者{{ group.offer_to_responser }}，回應者選擇{{ responser_choice }}。
         &lt;/p&gt;
     {% else %}
         &lt;p&gt;
-            提案者分配給你{{ group.offer_to_responser }}，你選擇{{ reponser_choice }}。
+            提案者分配給你{{ group.offer_to_responser }}，你選擇{{ responser_choice }}。
         &lt;/p&gt;
 
     {% endif %}
@@ -812,8 +811,8 @@ class Player(BasePlayer):
         group = self.group
         p1 = group.get_player_by_id(1)
         p2 = group.get_player_by_id(2)
-        p1.payoff = group.offer_accpet * (Constants.endowment - group.offer_to_responser)
-        p2.payoff = group.offer_accpet * group.offer_to_responser   </code></pre></div></li>
+        p1.payoff = group.offer_accept * (Constants.endowment - group.offer_to_responser)
+        p2.payoff = group.offer_accept * group.offer_to_responser   </code></pre></div></li>
 <li><p>我們在前面的<code>Result.html</code>設定過<code>responser_choice</code>，這個變數不存在<code>model.py</code>裡。如果要傳送不存在的變數值傳送到<code>Result.html</code>呈現，則可以在<code>class Results(Page)</code>使用<code>Page</code>class 內建的函數名稱<code>def vars_for_template()</code>，該函數的<code>return</code>值必須為 <code>{target_variale : target_value}</code> 的 dict，otree 會將<code>return</code>值呈現在該頁面。在本例中，<code>target_variabl</code>即頁面上的<code>responser_choice</code>。而<code>target_value</code>是將<code>group.offer_accept</code>的值從數值轉成我們在<code>model.py</code>設定好的文字標籤，可以用函數<code>get_offer_accept_display()</code>來取得文字標籤：</p>
 
 <div><pre class="line-numbers"><code class="language-python">class Results(Page):
@@ -891,7 +890,7 @@ page_sequence = [
 <div><pre class="line-numbers"><code class="language-python">SESSION_CONFIGS = [
     {
         &#39;name&#39;: &#39;my_ultimatum&#39;,
-        &#39;display_name&#39;: &#39;最後通牒&#39;
+        &#39;display_name&#39;: &#39;最後通牒&#39;,
         &#39;num_demo_participants&#39;: 6,
         &#39;app_sequence&#39;: [&#39;my_ultimatum&#39;],
     },
