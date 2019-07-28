@@ -860,8 +860,8 @@ class ResultsWaitPage(WaitPage):
         group = self.group
         p1 = group.get_player_by_id(1)
         p2 = group.get_player_by_id(2)
-        p1.payoff = group.offer_accpet * (Constants.endowment - group.offer_to_responser)
-        p2.payoff = group.offer_accpet * group.offer_to_responser
+        p1.payoff = group.offer_accept * (Constants.endowment - group.offer_to_responser)
+        p2.payoff = group.offer_accept * group.offer_to_responser
 
 class Results(Page):
     def vars_for_template(self):
